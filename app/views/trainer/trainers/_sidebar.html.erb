@@ -1,0 +1,9 @@
+<div>
+
+<h3><%= trainer_name.first_name %></h3>
+    <ul>
+      <li><%= link_to "マイページ", trainer_trainer_path(trainer_name) %></li>
+      <li><%= link_to "レッスン作成", new_trainer_lesson_path %></li>
+      <li><%= link_to "トレーナー編集", edit_trainer_trainer_path(trainer_name) %></li>
+    </ul>
+</div>

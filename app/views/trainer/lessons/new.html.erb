@@ -1,0 +1,25 @@
+新規レッスン作成
+<div class="row">
+    <div class="col-2">
+      <%= render'trainer/trainers/sidebar', trainer_name: @trainer %>
+    </div>
+    <div class="col-8">
+
+<h1><%= @trainer.first_name %></h1>
+
+<%= form_with model:@lesson, url:'/trainer/lessons', local:true do |f| %>
+
+<h4>タイトル</h4>
+  <%= f.text_field :title %>
+  <h4>レッスンひと言</h4>
+  <%= f.text_area :lesson_word %>
+
+
+  <h4>【レッスン概要】</h4>
+
+  <%= f.select :lesson_genre, options_for_select_from_enum(LessonGenre, :genre, :lesson_genre) %>
+  <%= f.submit '投稿' %>
+<% end %>
+
+
+</div>
