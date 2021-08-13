@@ -8,6 +8,6 @@ ja:
     take_lesson_genre:
       genre:
         in_person: 対面
+        in_person_personal: 対面（パーソナル）
         live: ライブ
         online_personal: オンライン（パーソナル）
-        in_person_personal: 対面（パーソナル）

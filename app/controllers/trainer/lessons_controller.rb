@@ -7,7 +7,9 @@ class Trainer::LessonsController < ApplicationController
   end
 
   def create
-
+    @lesson = Lesson.new(lesson_params)
+    @lesson.total_time.round = lesson_total_time(@lesson.start, @lesson.end)
+    @lesson.date_validation = date_validation(@lesson.start, @lesson.end)
   end
 
   def edit
