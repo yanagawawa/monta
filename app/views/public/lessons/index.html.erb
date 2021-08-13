@@ -1,1 +1,10 @@
 レッスンindex
+ <% @lessons.each do |lesson| %>
+ <div>
+    <%= lesson.lesson_genre.genre %>
+     <%= link_to lesson_path(lesson) do %>
+     <%= attachment_image_tag lesson, :image, format: 'jpeg', fallback: "no_image.jpg",size:"200x200" %>
+     <% end %><br>
+     <%= lesson.last_name %><%= lesson.first_name %><br>
+ </div>
+ <% end %>

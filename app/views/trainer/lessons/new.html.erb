@@ -18,9 +18,9 @@
 
   <h4>【レッスン概要】</h4>
 
-  <%= f.select :lesson_genre, options_for_select_from_enum(LessonGenre, :genre, :lesson_genre) %>
+  <%= f.select :lesson_genre_id, options_for_select_from_enum(LessonGenre, :genre, :lesson_genre) %>
 
-  <%= f.select :take_lesson_genre, options_for_select_from_enum(TakeLessonGenre, :genre, :take_lesson_genre) %>
+  <%= f.select :take_lesson_genre_id, options_for_select_from_enum(TakeLessonGenre, :genre, :take_lesson_genre) %>
 
   <input type="button" value="住所入力" onclick="hyoji2(0)">
 <input type="button" value="無し" onclick="hyoji2(1)">

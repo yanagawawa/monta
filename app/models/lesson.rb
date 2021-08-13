@@ -18,9 +18,9 @@ class Lesson < ApplicationRecord
 
   validate :date_validation
 
-  def date_validation(start_time, end_time)
-    if start_time > end_time
-        errors.add(:end_at, "開始時間以降を指定してください。")
+  def date_validation
+    if :start > :end
+        errors.add(:end, "開始時間以降を指定してください。")
     end
   end
 

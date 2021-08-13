@@ -29,6 +29,7 @@
             <li><%= link_to "アバウト",  trainer_about_path %></li>
             <li><%= link_to "マイページ", trainer_trainer_path(current_trainer.id) %></li>
             <li><%= link_to "ログアウト", destroy_trainer_session_path, method: :delete %></li>
+            <li><%= link_to "レッスンALL", lessons_path %></li>
           <% else %>
             <li>ユーザー</li>
             <li><%= link_to "アバウト", about_path %></li>
