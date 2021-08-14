@@ -1,2 +1,0 @@
-module Trainer::TakeLessonGenresHelper
-end
