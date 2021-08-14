@@ -1,12 +1,11 @@
 ja:
   enums:
-    lesson_genre:
-      genre:
+    lesson:
+      lesson_genre:
         training: トレーニング
         yoga: ヨガ
         dance: ダンス
-    take_lesson_genre:
-      genre:
+      take_lesson_genre:
         in_person: 対面
         in_person_personal: 対面（パーソナル）
         live: ライブ
