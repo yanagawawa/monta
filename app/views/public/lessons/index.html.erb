@@ -1,7 +1,7 @@
 レッスンindexaaaa
  <% @lessons.each do |lesson| %>
-    <%= lesson.lesson_genre %>
-    <%= lesson.take_lesson_genre %>
+    <%= lesson.lesson_genre_i18n %>
+    <%= lesson.take_lesson_genre_i18n %>
     <%= lesson.title %>
     <%= lesson.total_time %>
      <%= link_to lesson_path(lesson) do %>
