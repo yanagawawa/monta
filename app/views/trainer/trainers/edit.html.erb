@@ -1,0 +1,49 @@
+<h1>トレーナー編集</h1>
+
+<%= form_with model: @trainer, url: trainer_trainer_path(@trainer.id), local: true do |f| %>
+
+  <p class="col-sm-3">名前</p>
+   <p class="col-sm-1 text-right">(姓)</p>
+   <div class="field col-sm-4">
+    <%= f.text_field :last_name, autofocus: true, placeholder: "令和" %>
+  </div>
+
+    <p class="col-sm-1 text-right">(名)</p>
+
+   <div class="field col-sm-3">
+    <%= f.text_field :first_name, autofocus: true, placeholder: "道子" %>
+  </div>
+
+  <p class="col-sm-1 text-right">(セイ)</p>
+   <div class="field col-sm-4">
+    <%= f.text_field :last_name_kana, autofocus: true, placeholder: "レイワ" %>
+  </div>
+
+    <p class="col-sm-1 text-right">(メイ)</p>
+
+   <div class="field col-sm-3">
+    <%= f.text_field :first_name_kana, autofocus: true, placeholder: "ミチコ" %>
+  </div>
+
+   <div class="form-group row">
+   <%= f.label :pr_comment, "PRコメント", class: "col-sm-3" %>
+   <%= f.text_area :pr_comment, placeholder:"PRコメント",required: true,class:"form-control col-sm-9" %></div>
+
+<div class="form-group row">
+<%= f.label :profile_image, "プロフィールイメージ",class:"col-sm-3"%>
+<%= f.attachment_field :profile_image, class:"col-sm-9" %></div>
+
+<div class="form-group row">
+<%= f.label :pr_image, "PR画像",class:"col-sm-3"%>
+<%= f.attachment_field :pr_image, class:"col-sm-9" %></div>
+
+<div class="form-group row">
+   <%= f.label :prefectures, "都道府県",class:"col-sm-3" %>
+   <%= f.text_field :prefectures, placeholder:"都道府県",required: true,class:"form-control col-sm-9" %></div>
+
+<div class="form-group row">
+   <%= f.label :result, "資格・実績",class:"col-sm-3" %>
+   <%= f.text_area :result, placeholder:"資格・実績",required: true,class:"form-control col-sm-9" %></div>
+
+<%= f.submit '変更を保存' ,class: 'btn btn-success'%>
+<% end %>
