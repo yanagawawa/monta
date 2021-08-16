@@ -2,6 +2,8 @@
  <% @lessons.each do |lesson| %>
     <%= lesson.lesson_genre %>
     <%= lesson.take_lesson_genre %>
+    <%= lesson.title %>
+    <%= lesson.total_time %>
      <%= link_to lesson_path(lesson) do %>
      <%= attachment_image_tag lesson.trainer, :profile_image, format: 'jpeg', fallback: "no_image.jpg",size:"200x200" %>
      <% end %><br>

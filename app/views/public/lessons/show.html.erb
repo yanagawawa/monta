@@ -1,1 +1,6 @@
 レッスン詳細ページ
+<%= @lesson.title %>
+<%= link_to lesson_trainer_path(@lesson.trainer.id) do %>
+<%= @lesson.trainer.last_name %>
+<%= @lesson.trainer.first_name %>
+<% end %>
