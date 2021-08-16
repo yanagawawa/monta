@@ -12,7 +12,9 @@
  *
  *= require_tree .
  *= require_self
+ *= require simple_calendar
  */
+
 @import "bootstrap";
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
