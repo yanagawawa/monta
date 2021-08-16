@@ -12,7 +12,9 @@ class CreateLessons < ActiveRecord::Migration[5.2]
     t.datetime "end"
     t.integer "total_time"
     t.integer "total_people", default: 1, null: false
-    t.string "lesson_location"
+    t.string "address"
+    t.float "latitude"
+    t.float "longitude"
     t.text "lesson_details", default: "", null: false
     t.text "belongings", default: "", null: false
     t.integer "lesson_status", default: 0, null: false

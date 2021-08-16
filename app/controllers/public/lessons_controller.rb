@@ -6,6 +6,7 @@ class Public::LessonsController < ApplicationController
 
   def show
     @lesson = Lesson.find(params[:id])
+    gon.lesson = @lesson
   end
 
   def calendar
