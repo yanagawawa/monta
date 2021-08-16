@@ -1,8 +1,9 @@
 class Lesson < ApplicationRecord
 
-
   belongs_to :trainer, optional: true
 
+  geocoded_by :address
+  after_validation :geocode
 
   validates :lesson_genre, presence: true
   validates :take_lesson_genre, presence: true
