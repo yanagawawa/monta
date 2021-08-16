@@ -21,6 +21,8 @@ class Lesson < ApplicationRecord
 
   enum take_lesson_genre: { in_person: 0, in_person_personal: 1, live: 2, online_personal: 3 }
 
+  enum take_lesson_genre: { not_held: 0, held: 1, cancel: 2 }
+
   validate :date_validation
   validate :start_check
 
