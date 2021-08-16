@@ -10,6 +10,7 @@ class Public::LessonsController < ApplicationController
   end
 
   def calendar
+    @lessons = Lesson.all
   end
 
 end
