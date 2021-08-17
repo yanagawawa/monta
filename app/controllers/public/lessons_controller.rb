@@ -9,7 +9,7 @@ class Public::LessonsController < ApplicationController
     if current_user.present?
      @relationship = Relationship.new(trainer_id: @lesson.trainer.id, user_id: current_user.id)
     end
-    @relationships = Relationship.find_by(trainer_id: @lesson.trainer.id)
+    @relationships = Relationship.find_by(trainer_id: @lesson.trainer.id, user_id: current_user.id)
     gon.lesson = @lesson
   end
 
