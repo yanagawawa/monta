@@ -2,14 +2,20 @@ class Public::RelationshipsController < ApplicationController
 
   def create
     @user = Trainer.find(params[:relationship][:trainer_id])
-    current_user.follow!(@user)
+    @relationship = Relationship.new(relationship_params)
+    @relationship.save
     redirect_to @user
   end
 
   def destroy
-    @user = Relationship.find(params[:id]).following
-    current_user.unfollow!(@user)
+    @relationship = Relationship.find(params[:id])
+    @relationship.destroy
     redirect_to @user
   end
+
+   private
+    def relationship_params
+      params.require(:relationship).permit(:trainer_id, :user_id)
+    end
 
 end
