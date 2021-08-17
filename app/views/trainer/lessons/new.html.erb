@@ -1,10 +1,11 @@
-新規レッスン作成
+
 <div class="row">
     <div class="col-2">
       <%= render'trainer/trainers/sidebar', trainer_name: @trainer %>
     </div>
     <div class="col-8">
-
+      新規レッスン作成
+<%= render 'layouts/errors', obj: @trainer %>
 <h1><%= @trainer.first_name %></h1>
 
 <%= form_with model:@lesson, url:'/trainer/lessons', local:true do |f| %>
@@ -12,14 +13,55 @@
 <h4>タイトル</h4>
   <%= f.text_field :title %>
   <h4>レッスンひと言</h4>
-  <%= f.text_area :lesson_word %>
+  <%= f.text_field :lesson_word %>
 
 
   <h4>【レッスン概要】</h4>
 
-  <%= f.select :lesson_genre, options_for_select_from_enum(LessonGenre, :genre, :lesson_genre) %>
+  <%= f.select :lesson_genre, options_for_select_from_enum(Lesson, :lesson_genre) %>
+
+  <%= f.select :take_lesson_genre, options_for_select_from_enum(Lesson, :take_lesson_genre) %>
+
+  <input type="button" value="住所入力" onclick="hyoji2(0)">
+<input type="button" value="無し" onclick="hyoji2(1)">
+
+  <div id="visi">
+  <h4>住所</h4>
+  <%= f.text_field :address %>
+  </div>
+
+  <h4>レッスン開始</h4>
+  <%= f.datetime_field :start_time, class: 'form-control', step: 300 %>
+
+  <h4>レッスン終了</h4>
+  <%= f.datetime_field :end_time, class: 'form-control', step: 300 %>
+
+  <h4>人数</h4>
+  <%= f.text_field :total_people %>
+
+  <h4>レッスン詳細</h4>
+  <%= f.text_area :lesson_details %>
+
+  <h4>持ち物</h4>
+  <%= f.text_area :belongings %>
+
   <%= f.submit '投稿' %>
 <% end %>
 
-
 </div>
+
+<script>
+
+function hyoji2(num)
+{
+  if (num == 0)
+  {
+    document.getElementById("visi").style.visibility="visible";
+  }
+  else
+  {
+    document.getElementById("visi").style.visibility="hidden";
+  }
+}
+
+</script>

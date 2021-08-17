@@ -1,0 +1,11 @@
+
+カレンダー表示
+<%= month_calendar events: @lessons do |date, lessons| %>
+  <%= date %>
+    <div>
+      <%= lessons.count %>
+    </div>
+  <% lessons.each do |lesson| %>
+
+  <% end %>
+<% end %>

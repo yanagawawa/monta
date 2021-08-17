@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Monta</title>
+    <title>monta</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <%= include_gon %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
      <%= favicon_link_tag('favicon.ico') %>
@@ -29,6 +29,7 @@
             <li><%= link_to "アバウト",  trainer_about_path %></li>
             <li><%= link_to "マイページ", trainer_trainer_path(current_trainer.id) %></li>
             <li><%= link_to "ログアウト", destroy_trainer_session_path, method: :delete %></li>
+            <li><%= link_to "レッスンALL", lessons_path %></li>
           <% else %>
             <li>ユーザー</li>
             <li><%= link_to "アバウト", about_path %></li>
