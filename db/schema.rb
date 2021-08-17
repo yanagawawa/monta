@@ -10,26 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_12_154704) do
-
-  create_table "lesson_genres", force: :cascade do |t|
-    t.integer "genre", default: 0, null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
+ActiveRecord::Schema.define(version: 2021_08_14_121519) do
 
   create_table "lessons", force: :cascade do |t|
     t.integer "trainer_id"
-    t.integer "user_id"
-    t.integer "lesson_genre_id"
-    t.integer "take_lesson_genre_id"
+    t.integer "reserve_id"
+    t.integer "lesson_genre", default: 0, null: false
+    t.integer "take_lesson_genre", default: 0, null: false
     t.string "title", default: "", null: false
     t.string "lesson_word", default: "", null: false
-    t.datetime "start"
-    t.datetime "end"
+    t.datetime "start_time"
+    t.datetime "end_time"
     t.integer "total_time"
     t.integer "total_people", default: 1, null: false
-    t.string "lesson_location"
+    t.string "address"
+    t.float "latitude"
+    t.float "longitude"
     t.text "lesson_details", default: "", null: false
     t.text "belongings", default: "", null: false
     t.integer "lesson_status", default: 0, null: false
@@ -40,12 +36,6 @@ ActiveRecord::Schema.define(version: 2021_08_12_154704) do
   create_table "rooms", force: :cascade do |t|
     t.integer "trainer_id"
     t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "take_lesson_genres", force: :cascade do |t|
-    t.integer "genre", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -1,1 +1,46 @@
 レッスン詳細ページ
+<%= @lesson.title %>
+<%= link_to lesson_trainer_path(@lesson.trainer.id) do %>
+<%= @lesson.trainer.last_name %>
+<%= @lesson.trainer.first_name %>
+<% end %>
+
+<% unless @lesson.address == nil %>
+<div id='map'></div>
+<% end %>
+
+<style>
+#map{
+  height: 500px;
+  width: 500px;
+}
+</style>
+
+<script>
+
+  let map;
+
+  function initMap() {
+    geocoder = new google.maps.Geocoder()
+
+    map = new google.maps.Map(document.getElementById('map'), {
+      // コントローラーで定義した変数から緯度経度を呼び出し、マップの中心に表示
+      center: {
+        lat: gon.lesson.latitude,
+        lng: gon.lesson.longitude
+      },
+      zoom: 12,
+    });
+
+    marker = new google.maps.Marker({
+      // コントローラーで定義した変数から緯度経度を呼び出し、マーカーを立てる
+      position: {
+        lat: gon.lesson.latitude,
+        lng: gon.lesson.longitude
+      },
+      map: map
+    });
+  }
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['SECRET_KEY'] %>&callback=initMap" async defer></script>

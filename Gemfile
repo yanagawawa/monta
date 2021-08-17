@@ -69,6 +69,11 @@ gem 'jquery-rails'
 gem 'font-awesome-sass', '~> 5.13'
 gem 'dotenv-rails'
 gem 'rails-i18n', '~> 5.1'
+gem 'gon'
+gem 'geocoder'
+gem 'simple_calendar', '~> 2.0'
+gem 'enum_help'
+
 # group :production do
 # gem 'mysql2'
 # end
