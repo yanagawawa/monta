@@ -2,7 +2,7 @@
 
 <% if current_user.present? %>
   <% if Relationship.find_by(user_id: current_user.id, trainer_id: @lesson.trainer.id).present? %>
-    <%= form_with model: @relationships.find_by(user_id: current_user.id), url: relationship_path(@relationships.find_by(user_id: current_user.id)), method: :delete do |f| %>
+    <%= form_with model: @relationships, url: relationship_path(@relationships), method: :delete do |f| %>
       <%= f.submit "Unfollow", class: "btn btn-large follow-btn" %>
     <% end %>
   <% else %>
