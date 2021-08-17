@@ -19,8 +19,8 @@ ActiveRecord::Schema.define(version: 2021_08_14_121519) do
     t.integer "take_lesson_genre", default: 0, null: false
     t.string "title", default: "", null: false
     t.string "lesson_word", default: "", null: false
-    t.datetime "start"
-    t.datetime "end"
+    t.datetime "start_time"
+    t.datetime "end_time"
     t.integer "total_time"
     t.integer "total_people", default: 1, null: false
     t.string "address"

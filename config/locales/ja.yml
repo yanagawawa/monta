@@ -10,3 +10,7 @@ ja:
         in_person_personal: 対面（パーソナル）
         live: ライブ
         online_personal: オンライン（パーソナル）
+      lesson_status:
+        not_held: 未開催
+        held: 開催済み
+        cancel: キャンセル
