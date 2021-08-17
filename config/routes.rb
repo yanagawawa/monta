@@ -27,11 +27,11 @@ Rails.application.routes.draw do
     }
 
   scope module: :public do
-    
+
     resources :lesson_trainers, only: [:index, :show, :create]
     resources :lessons, only: [:index, :show]
     get '/calendar' => 'lessons#calendar'
-    
+    resources :relationships,       only: [:create, :destroy]
   end
 
 end

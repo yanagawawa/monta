@@ -5,6 +5,8 @@ class Trainer < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
          has_many :lessons, dependent: :destroy
+         has_many :relationships, dependent: :destroy
+         has_many :users, through: :relationships
          has_many :rooms, dependent: :destroy
 
           validates :last_name, presence: true
