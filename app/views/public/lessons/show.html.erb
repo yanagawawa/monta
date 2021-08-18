@@ -1,4 +1,23 @@
 レッスン詳細ページ
+
+<% if current_user.present? %>
+  <% if Relationship.find_by(user_id: current_user.id, trainer_id: @lesson.trainer.id).present? %>
+    <%= form_with model: @relationships, url: relationship_path(@relationships), method: :delete do |f| %>
+      <%= f.submit "Unfollow", class: "btn btn-large follow-btn" %>
+    <% end %>
+  <% else %>
+    <%= form_with model: @relationship, url: relationships_path do |f| %>
+      <div><%= f.hidden_field :trainer_id %></div>
+      <div><%= f.hidden_field :user_id %></div>
+      <%= f.submit "Follow", class: "btn btn-large btn-primary follow-btn" %>
+    <% end %>
+  <% end %>
+<% end %>
+
+<% if current_trainer.present? %>
+  <%= link_to "レッスン編集", edit_trainer_lesson_path(@lesson) %>
+<% end %>
+
 <%= @lesson.title %>
 <%= link_to lesson_trainer_path(@lesson.trainer.id) do %>
 <%= @lesson.trainer.last_name %>
