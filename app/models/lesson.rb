@@ -2,6 +2,9 @@ class Lesson < ApplicationRecord
 
   belongs_to :trainer, optional: true
 
+  has_many :reserves, dependent: :destroy
+  has_many :users, through: :reserves
+
   geocoded_by :address
   after_validation :geocode
 

@@ -6,6 +6,10 @@ class User < ApplicationRecord
 
   has_many :relationships, dependent: :destroy
   has_many :trainers, through: :relationships
+
+  has_many :reserves, dependent: :destroy
+  has_many :lessons, through: :reserves
+
   has_many :rooms, dependent: :destroy
 
   # def follow!(other_trainer)
