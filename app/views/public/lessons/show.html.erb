@@ -14,6 +14,10 @@
   <% end %>
 <% end %>
 
+<% if current_trainer.present? %>
+  <%= link_to "レッスン編集", edit_trainer_lesson_path(@lesson) %>
+<% end %>
+
 <%= @lesson.title %>
 <%= link_to lesson_trainer_path(@lesson.trainer.id) do %>
 <%= @lesson.trainer.last_name %>

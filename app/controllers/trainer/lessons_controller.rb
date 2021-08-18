@@ -10,7 +10,7 @@ class Trainer::LessonsController < ApplicationController
     @lesson.total_time = @lesson.lesson_total_time(@lesson.start_time, @lesson.end_time).round
     @lesson.trainer = current_trainer
     if @lesson.save
-     redirect_to trainer_trainer_path(@lesson.trainer.id)
+     redirect_to lesson_path(@lesson.id)
     else
      @trainer = current_trainer
      render :new
@@ -18,11 +18,20 @@ class Trainer::LessonsController < ApplicationController
   end
 
   def edit
-
+    @lesson = Lesson.find(params[:id])
+    @trainer = current_trainer
   end
 
   def update
-
+    @lesson = Lesson.find(params[:id])
+    @lesson.total_time = @lesson.lesson_total_time(@lesson.start_time, @lesson.end_time).round
+    @lesson.trainer = current_trainer
+    if @lesson.update(lesson_params)
+     redirect_to lesson_path(@lesson.id)
+    else
+     @trainer = current_trainer
+     render :edit
+    end
   end
 
   private
