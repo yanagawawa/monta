@@ -1,0 +1,27 @@
+チャットルーム
+
+<%= render partial: 'public/rooms/main_chat', collection: @messages %>
+<% @messages.each do |message| %>
+  <% if message.user_id.blank? %>
+    TRANER PARTIAL
+    <%= render partial: 'public/rooms/trainer_chat', locals: {message: message, view:'text-right'} %>
+  <% else %>
+    USER PARTIAL
+    <%= render partial: 'public/rooms/user_chat', locals: {message: message, view:'text-left'} %>
+  <% end %>
+<% end %>
+
+<%= form_with model: [@room, @message], html: {class: "form"}, local: true do |f|%>
+
+ <div class="form-input">
+
+<%= f.text_field :message, class: 'form-message',
+
+placeholder: 'メッセージを入力してください' %>
+
+
+ </div>
+
+<%= f.submit '送信', class: 'form-submit' %>
+
+<% end %>

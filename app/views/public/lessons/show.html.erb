@@ -1,10 +1,13 @@
 レッスン詳細ページ
 
 <% if current_user.present? %>
-  <% if Relationship.find_by(user_id: current_user.id, trainer_id: @lesson.trainer.id).present? %>
+
+  <% if @relationships.present? %>
+
     <%= form_with model: @relationships, url: relationship_path(@relationships), method: :delete do |f| %>
       <%= f.submit "Unfollow", class: "btn btn-large follow-btn" %>
     <% end %>
+
     <% if @lesson.total_people >= @reserves.count %>
       <%= form_with model: @reserve, url: reserves_path do |f| %>
         <div><%= f.hidden_field :lesson_id %></div>
@@ -12,13 +15,17 @@
         <%= f.submit "予約", class: "btn btn-large btn-primary follow-btn" %>
       <% end %>
     <% elsif @lesson.reserves.find_by(user_id: current_user.id) %>
-      <% if @lesson.reserves.find_by(user_id: current_user.id).take_lesson_status == "not_held" %>
-        <div>予約済み</div>
-      <% elsif @lesson.reserves.find_by(user_id: current_user.id).take_lesson_status == "held" %>
-        <div>受講済み</div>
+      <%= link_to "DMを始める", new_room_path(trainer_id: @lesson.trainer.id) %>
+
+      <% case @lesson.reserves.find_by(user_id: current_user.id).take_lesson_status %>
+      <% when 'not_held' then %>
+        <div>Yoyaku Done</div>
+      <% when 'held' then %>
+        <div>Zyukou Done</div>
       <% else %>
-        <div>キャンセル</div>
+        <div>Cancel</div>
       <% end %>
+
     <% else %>
       <div>満員</div>
     <% end %>
