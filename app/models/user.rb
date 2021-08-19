@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_many :lessons, through: :reserves
 
   has_many :rooms, dependent: :destroy
+  has_many :messages, dependent: :destroy
 
   validates :last_name, presence: true
   validates :first_name, presence: true

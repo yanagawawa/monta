@@ -8,6 +8,7 @@ class Trainer < ApplicationRecord
          has_many :relationships, dependent: :destroy
          has_many :users, through: :relationships
          has_many :rooms, dependent: :destroy
+         has_many :messages, dependent: :destroy
 
           validates :last_name, presence: true
           validates :first_name, presence: true
