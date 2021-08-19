@@ -14,3 +14,8 @@ ja:
         not_held: 未開催
         held: 開催済み
         cancel: キャンセル
+    reserve:
+      take_lesson_status:
+        not_held: 未受講
+        held: 受講済み
+        cancel: キャンセル

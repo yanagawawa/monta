@@ -28,10 +28,13 @@ Rails.application.routes.draw do
 
   scope module: :public do
 
+    resources :users, only: [:show, :edit, :update]
+    get '/history' => 'users#history'
     resources :lesson_trainers, only: [:index, :show, :create]
     resources :lessons, only: [:index, :show]
     get '/calendar' => 'lessons#calendar'
-    resources :relationships,       only: [:create, :destroy]
+    resources :relationships, only: [:create, :destroy]
+    resources :reserves, only: [:create, :update, :destroy]
   end
 
 end

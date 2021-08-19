@@ -6,11 +6,10 @@
     <div class="col-8">
       新規レッスン作成
 
-<%= render 'layouts/errors', obj: @trainer %>
 <h1><%= @trainer.first_name %></h1>
 
 <%= form_with model:@lesson, url:'/trainer/lessons', local:true do |f| %>
-
+<%= render 'layouts/errors', model: f.object %>
 <h4>タイトル</h4>
   <%= f.text_field :title %>
   <h4>レッスンひと言</h4>
@@ -32,10 +31,10 @@
   </div>
 
   <h4>レッスン開始</h4>
-  <%= f.datetime_field :start_time, class: 'form-control', step: 300 %>
+  <%= f.datetime_field :start_time, class: 'form-control, min: Date.current', step: 300 %>
 
   <h4>レッスン終了</h4>
-  <%= f.datetime_field :end_time, class: 'form-control', step: 300 %>
+  <%= f.datetime_field :end_time, class: 'form-control, min: Date.current', step: 300 %>
 
   <h4>人数</h4>
   <%= f.text_field :total_people %>
