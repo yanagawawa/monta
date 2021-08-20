@@ -19,11 +19,11 @@
 
       <% case @lesson.reserves.find_by(user_id: current_user.id).take_lesson_status %>
       <% when 'not_held' then %>
-        <div>Yoyaku Done</div>
+        <div>予約済み</div>
       <% when 'held' then %>
-        <div>Zyukou Done</div>
+        <div>受講済み</div>
       <% else %>
-        <div>Cancel</div>
+        <div>キャンセル</div>
       <% end %>
 
     <% else %>

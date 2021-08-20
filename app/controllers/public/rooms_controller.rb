@@ -7,6 +7,7 @@ class Public::RoomsController < ApplicationController
   def show
     @message = Message.new
     @room = Room.find(params[:id])
+    @messages = @room.messages.includes(:user, :trainer)
   end
 
   def new
