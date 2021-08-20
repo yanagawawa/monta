@@ -1,7 +1,7 @@
 class Public::RoomsController < ApplicationController
 
   def index
-
+    @rooms = Room.find_by()
   end
 
   def show

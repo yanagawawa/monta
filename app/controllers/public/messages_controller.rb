@@ -15,7 +15,6 @@ class Public::MessagesController < ApplicationController
 
   def destroy
 
-
   end
 
   private

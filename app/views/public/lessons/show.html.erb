@@ -27,8 +27,11 @@
       <% end %>
 
     <% else %>
+
       <div>満員</div>
+
     <% end %>
+
   <% else %>
     <%= form_with model: @relationship, url: relationships_path do |f| %>
       <div><%= f.hidden_field :trainer_id %></div>
