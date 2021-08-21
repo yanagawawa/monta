@@ -52,7 +52,9 @@
 <%= @lesson.trainer.first_name %>
 <% end %>
 
-<% unless @lesson.address == nil %>
+<% if @lesson.address.blank? %>
+
+<% else %>
 <div id='map'></div>
 <% end %>
 

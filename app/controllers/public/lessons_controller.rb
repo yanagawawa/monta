@@ -1,7 +1,9 @@
 class Public::LessonsController < ApplicationController
 
   def index
-    @lessons = Lesson.all
+    @lessons = Lesson.where("lessons.start_time > ?", DateTime.now).reorder(:start_time)
+    @search_params = lesson_search_params
+    @users = Lesson.search(@search_params).includes(:prefecture)
   end
 
   def show
@@ -17,6 +19,12 @@ class Public::LessonsController < ApplicationController
 
   def calendar
     @lessons = Lesson.all
+  end
+  
+  private
+
+  def lesson_search_params
+    params.fetch(:search, {}).permit(:trainer_id, :lesson_genre, :take_lesson_genre, :title, :lesson_word, :start_time, :end_time, :total_time, :total_people, :lesson_details, :belongings, :lesson_status, :address)
   end
 
 end

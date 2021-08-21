@@ -4,6 +4,7 @@
 <% @messages.each do |message| %>
   <% if !message.user.nil? %>
     <%= render partial: 'public/rooms/user_chat', locals: {message: message, view:'text-left'} %>
+    <%#= link_to "×", room_message_path(message), method: :delete %>
   <% else %>
     <%= render partial: 'public/rooms/trainer_chat', locals: {message: message, view:'text-right'} %>
   <% end %>

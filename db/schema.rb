@@ -78,7 +78,7 @@ ActiveRecord::Schema.define(version: 2021_08_19_071039) do
     t.string "profile_image_id"
     t.string "pr_image_id"
     t.text "pr_comment"
-    t.string "prefectures"
+    t.integer "prefectures", default: 0, null: false
     t.text "result"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

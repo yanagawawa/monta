@@ -1,20 +1,27 @@
 class Public::RoomsController < ApplicationController
 
   def index
-    @rooms = Room.find_by()
+    if current_user.present?
+      @rooms = Room.where(user_id: current_user.id)
+    elsif current_trainer.present?
+      @rooms = Room.where(trainer_id: current_trainer.id)
+    end
   end
 
   def show
     @message = Message.new
+
     @message.user = current_user
+    @message.trainer = current_trainer
+
     @room = Room.find(params[:id])
     @messages = @room.messages.includes(:user, :trainer)
-    @sender = "user"
+    @sender = "trainer"
     # 既読未読を識別するために、送り主をbooleanで識別する
     # if @massage.user = current_user
-    #   @sender = false
-    # else
-    #   @sender = true
+    #   @sender = "user"
+    # elsif @massage.trainer = current_trainer
+    #   @sender = "trainer"
     # end
   end
 
@@ -29,7 +36,9 @@ class Public::RoomsController < ApplicationController
   end
 
   def destroy
-
+    @room = Room.find(params[:id])
+    @room.destroy
+    redirect_to rooms_path
   end
 
 end

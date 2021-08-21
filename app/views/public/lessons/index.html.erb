@@ -1,4 +1,36 @@
 レッスンindex
+<p id="notice"><%= notice %></p>
+
+<%= render 'public/lessons/search', trainer_name: @trainer %>
+
+
+<ul class="nav nav-tabs" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="item1-tab" data-toggle="tab" href="#item1" role="tab" aria-controls="item1" aria-selected="true">ALL</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="item2-tab" data-toggle="tab" href="#item2" role="tab" aria-controls="item2" aria-selected="false">Item#2</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="item3-tab" data-toggle="tab" href="#item3" role="tab" aria-controls="item3" aria-selected="false">Item#3</a>
+  </li>
+</ul>
+<div class="tab-content">
+  <div class="tab-pane fade show active" id="item1" role="tabpanel" aria-labelledby="item1-tab">
+    <% @lessons.each do |lesson| %>
+    <%= lesson.lesson_genre_i18n %>
+    <%= lesson.take_lesson_genre_i18n %>
+    <%= lesson.title %>
+    <%= lesson.total_time %>
+     <%= link_to lesson_path(lesson) do %>
+     <%= attachment_image_tag lesson.trainer, :profile_image, format: 'jpeg', fallback: "no_image.jpg",size:"200x200" %>
+     <% end %><br>
+     <%= lesson.trainer.last_name %><%= lesson.trainer.first_name %>
+   <% end %>
+ </div>
+  <div class="tab-pane fade" id="item2" role="tabpanel" aria-labelledby="item2-tab">This is a text of item#2.</div>
+  <div class="tab-pane fade" id="item3" role="tabpanel" aria-labelledby="item3-tab">This is a text of item#3.</div>
+</div>
  <% @lessons.each do |lesson| %>
     <%= lesson.lesson_genre_i18n %>
     <%= lesson.take_lesson_genre_i18n %>

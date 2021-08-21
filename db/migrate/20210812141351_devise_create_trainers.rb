@@ -39,7 +39,7 @@ class DeviseCreateTrainers < ActiveRecord::Migration[5.2]
       t.string "profile_image_id"
       t.string "pr_image_id"
       t.text "pr_comment"
-      t.string "prefectures"
+      t.integer "prefectures", default: 0, null: false
       t.text "result"
 
 
