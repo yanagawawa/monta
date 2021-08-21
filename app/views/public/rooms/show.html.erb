@@ -2,12 +2,10 @@
 
 
 <% @messages.each do |message| %>
-  <% if message.user_id.blank? %>
-    TRANER PARTIAL
-    <%= render partial: 'public/rooms/trainer_chat', locals: {message: @message, view:'text-right'} %>
+  <% if !message.user.nil? %>
+    <%= render partial: 'public/rooms/user_chat', locals: {message: message, view:'text-left'} %>
   <% else %>
-    USER PARTIAL
-    <%= render partial: 'public/rooms/user_chat', locals: {message: @message, view:'text-left'} %>
+    <%= render partial: 'public/rooms/trainer_chat', locals: {message: message, view:'text-right'} %>
   <% end %>
 <% end %>
 
@@ -21,6 +19,8 @@
         <div><%= f.hidden_field :user_id, value: current_user.id %></div>
         <div><%= f.hidden_field :trainer_id, value: @room.trainer.id %></div>
       <% end %>
+      <div><%= f.hidden_field :room_id, value: @room.id %></div>
+      <div><%= f.hidden_field :sender, value: @sender %></div>
     </div>
    <%= f.submit '送信', class: 'form-submit' %>
   <% end %>

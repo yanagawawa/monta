@@ -6,8 +6,16 @@ class Public::RoomsController < ApplicationController
 
   def show
     @message = Message.new
+    @message.user = current_user
     @room = Room.find(params[:id])
     @messages = @room.messages.includes(:user, :trainer)
+    @sender = "user"
+    # 既読未読を識別するために、送り主をbooleanで識別する
+    # if @massage.user = current_user
+    #   @sender = false
+    # else
+    #   @sender = true
+    # end
   end
 
   def new

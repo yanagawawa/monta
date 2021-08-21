@@ -1,11 +1,11 @@
 <div class="message <%= view %>">
    <div class="upper-message">
-      <div class="message-user">
+      <div class="message-trainer">
         <%= message.trainer.last_name %>
         <%= message.trainer.first_name %>
       </div>
       <div class="message-date">
-        <%= message.created_at %>
+        <%= l message.created_at %>
       </div>
     </div>
     <div class="lower-message">
