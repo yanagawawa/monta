@@ -1,0 +1,27 @@
+チャットルーム
+
+
+<% @messages.each do |message| %>
+  <% if message.sender %>
+    <%= render partial: 'public/rooms/user_chat', locals: {message: message, view:'text-left'} %>
+    <%#= link_to "×", room_message_path(message), method: :delete %>
+  <% else %>
+    <%= render partial: 'public/rooms/trainer_chat', locals: {message: message, view:'text-right'} %>
+  <% end %>
+<% end %>
+
+  <%= form_with model: [@room, @message], html: {class: "form"}, local: true do |f|%>
+    <div class="form-input">
+      <%= f.text_field :message, class: 'form-message', placeholder: 'メッセージを入力してください' %>
+      <% if current_trainer.present? %>
+        <div><%= f.hidden_field :trainer_id, value: current_trainer.id %></div>
+        <div><%= f.hidden_field :user_id, value: @room.user.id %></div>
+      <% else %>
+        <div><%= f.hidden_field :user_id, value: current_user.id %></div>
+        <div><%= f.hidden_field :trainer_id, value: @room.trainer.id %></div>
+      <% end %>
+      <div><%= f.hidden_field :room_id, value: @room.id %></div>
+      <div><%= f.hidden_field :sender, value: @sender %></div>
+    </div>
+   <%= f.submit '送信', class: 'form-submit' %>
+  <% end %>

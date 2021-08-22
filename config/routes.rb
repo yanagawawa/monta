@@ -35,6 +35,11 @@ Rails.application.routes.draw do
     get '/calendar' => 'lessons#calendar'
     resources :relationships, only: [:create, :destroy]
     resources :reserves, only: [:create, :update, :destroy]
+
+    resources :rooms, only: [:show, :index, :new, :create, :destroy] do
+      resources :messages, only: [:create, :destroy]
+    end
+
   end
 
 end

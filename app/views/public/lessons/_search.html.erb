@@ -1,0 +1,31 @@
+<div class="search-form">
+  <%= form_with(scope: :search, url: users_path, method: :get, local: true) do |f| %>
+    <div class="field">
+      <%= f.label(:name, User.human_attribute_name(:name)) %>
+      <%= f.text_field :name, value: @search_params[:name] %>
+    </div>
+
+    <div class="field">
+      <%= f.label(:gender, User.human_attribute_name(:gender)) %>
+      <%= f.collection_radio_buttons(:gender, User.genders, :first, :first) do |r| %>
+        <%= tag.div(class: 'form-check form-check-inline') do %>
+          <%= r.radio_button(checked: r.value == @search_params[:gender], class: 'form-check-input') + f.label(User.human_attribute_name("gender.#{r.text}"), class: 'form-check-label') %>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div class="field">
+      <%= f.label(:birthday, User.human_attribute_name(:birthday)) %>
+      <%= f.date_field :birthday_from, value: @search_params[:birthday_from] %> ~ <%= f.date_field :birthday_to, value: @search_params[:birthday_to] %>
+    </div>
+
+    <div class="field">
+      <%= f.label(:prefecture_id, User.human_attribute_name(:prefecture_id)) %>
+      <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, selected: @search_params[:prefecture_id], include_blank: t('helpers.select.include_blank')) %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit(t('helpers.submit.search')) %>
+    </div>
+  <% end %>
+</div>

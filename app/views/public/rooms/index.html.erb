@@ -1,0 +1,24 @@
+チャットルーム一覧
+
+<% @rooms.each do |room| %>
+    <% if current_user.present? %>
+      <%= link_to room_path(room.id) do %>
+          <%= room.trainer.last_name %>
+          <%= room.trainer.first_name %>
+          <%= link_to "×", room_path(room), method: :delete %>
+          <% if @messages != 0 %>
+            <%= @messages.count %>
+          <% end %>
+
+      <% end %>
+    <% elsif current_trainer.present? %>
+        <%= link_to room_path(room.id) do %>
+          <%= room.user.last_name %>
+          <%= room.user.first_name %>
+          <%= link_to "×", room_path(room), method: :delete %>
+          <% if @messages != 0 %>
+            <%= @messages.count %>
+          <% end %>
+        <% end %>
+    <% end %>
+<% end %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_18_130045) do
+ActiveRecord::Schema.define(version: 2021_08_22_070959) do
 
   create_table "lessons", force: :cascade do |t|
     t.integer "trainer_id"
@@ -31,6 +31,17 @@ ActiveRecord::Schema.define(version: 2021_08_18_130045) do
     t.integer "lesson_status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.integer "room_id"
+    t.integer "user_id"
+    t.integer "trainer_id"
+    t.string "message", default: "", null: false
+    t.boolean "sender", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "is_read", default: false, null: false
   end
 
   create_table "relationships", force: :cascade do |t|
@@ -68,7 +79,7 @@ ActiveRecord::Schema.define(version: 2021_08_18_130045) do
     t.string "profile_image_id"
     t.string "pr_image_id"
     t.text "pr_comment"
-    t.string "prefectures"
+    t.integer "prefectures", default: 0, null: false
     t.text "result"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
