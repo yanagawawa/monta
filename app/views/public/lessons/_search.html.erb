@@ -1,31 +1,28 @@
 <div class="search-form">
-  <%= form_with(scope: :search, url: users_path, method: :get, local: true) do |f| %>
+  <%= form_with(scope: :search, url: lessons_path, method: :get, local: true) do |f| %>
     <div class="field">
-      <%= f.label(:name, User.human_attribute_name(:name)) %>
-      <%= f.text_field :name, value: @search_params[:name] %>
+      <%= f.label "タイトル" %>
+      <%= f.text_field :title, value: @search_params[:title] %>
     </div>
 
     <div class="field">
-      <%= f.label(:gender, User.human_attribute_name(:gender)) %>
-      <%= f.collection_radio_buttons(:gender, User.genders, :first, :first) do |r| %>
-        <%= tag.div(class: 'form-check form-check-inline') do %>
-          <%= r.radio_button(checked: r.value == @search_params[:gender], class: 'form-check-input') + f.label(User.human_attribute_name("gender.#{r.text}"), class: 'form-check-label') %>
-        <% end %>
-      <% end %>
+      <%= f.label "カテゴリ" %>
+      <%= f.collection_radio_buttons(:lesson_genre, Lesson.lesson_genres_i18n, :first , :last) %>
     </div>
 
     <div class="field">
-      <%= f.label(:birthday, User.human_attribute_name(:birthday)) %>
-      <%= f.date_field :birthday_from, value: @search_params[:birthday_from] %> ~ <%= f.date_field :birthday_to, value: @search_params[:birthday_to] %>
+      <%= f.label "日時" %>
+      <%= f.date_field :start_time, value: @search_params[:start_time] %> ~ <%= f.date_field :start_time_end, value: @search_params[:start_time_end] %>
     </div>
 
     <div class="field">
-      <%= f.label(:prefecture_id, User.human_attribute_name(:prefecture_id)) %>
-      <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, selected: @search_params[:prefecture_id], include_blank: t('helpers.select.include_blank')) %>
+      <%= f.label "都道府県" %>
+      <%= f.select :prefecture, Trainer.prefectures.keys, {}, required: true,class:"form-control col-sm-9" %>
+      <%#= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, selected: @search_params[:prefecture_id], include_blank: t('helpers.select.include_blank')) %>
     </div>
 
     <div class="actions">
-      <%= f.submit(t('helpers.submit.search')) %>
+     <%= f.submit '変更を保存' ,class: 'btn btn-success'%>
     </div>
   <% end %>
 </div>
