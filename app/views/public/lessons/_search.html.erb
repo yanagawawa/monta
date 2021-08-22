@@ -17,8 +17,7 @@
 
     <div class="field">
       <%= f.label "都道府県" %>
-      <%= f.select :prefecture, Trainer.prefectures.keys, {}, required: true,class:"form-control col-sm-9" %>
-      <%#= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, selected: @search_params[:prefecture_id], include_blank: t('helpers.select.include_blank')) %>
+      <%= f.select :prefecture, Trainer.prefectures.keys, {}, required: true %>
     </div>
 
     <div class="actions">
