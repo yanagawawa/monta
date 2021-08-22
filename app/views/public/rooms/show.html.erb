@@ -2,7 +2,7 @@
 
 
 <% @messages.each do |message| %>
-  <% if !message.user.nil? %>
+  <% if message.sender %>
     <%= render partial: 'public/rooms/user_chat', locals: {message: message, view:'text-left'} %>
     <%#= link_to "×", room_message_path(message), method: :delete %>
   <% else %>

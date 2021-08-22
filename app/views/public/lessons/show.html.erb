@@ -14,8 +14,10 @@
         <div><%= f.hidden_field :user_id %></div>
         <%= f.submit "予約", class: "btn btn-large btn-primary follow-btn" %>
       <% end %>
-    <% elsif @lesson.reserves.find_by(user_id: current_user.id) %>
+
       <%= link_to "DMを始める", new_room_path(trainer_id: @lesson.trainer.id) %>
+
+    <% elsif @lesson.reserves.find_by(user_id: current_user.id) %>
 
       <% case @lesson.reserves.find_by(user_id: current_user.id).take_lesson_status %>
       <% when 'not_held' then %>
@@ -25,6 +27,8 @@
       <% else %>
         <div>キャンセル</div>
       <% end %>
+
+      <%= link_to "DMを始める", new_room_path(trainer_id: @lesson.trainer.id) %>
 
     <% else %>
 

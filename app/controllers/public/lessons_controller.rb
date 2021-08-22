@@ -3,7 +3,7 @@ class Public::LessonsController < ApplicationController
   def index
     @lessons = Lesson.where("lessons.start_time > ?", DateTime.now).reorder(:start_time)
     @search_params = lesson_search_params
-    @users = Lesson.search(@search_params).includes(:prefecture)
+    @trainers = Lesson.search(@search_params).includes(:prefecture)
   end
 
   def show
@@ -20,7 +20,7 @@ class Public::LessonsController < ApplicationController
   def calendar
     @lessons = Lesson.all
   end
-  
+
   private
 
   def lesson_search_params
