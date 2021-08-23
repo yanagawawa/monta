@@ -1,6 +1,8 @@
 ユーザー編集ページ
+<div class="row">
+  <%= render'public/users/sidebar', current_user: @user %>
 
-<%= form_with model: @user, url: user_path(@user.id), local: true do |f| %>
+  <%= form_with model: @user, url: user_path(@user.id), local: true do |f| %>
 
   <p class="col-sm-3">名前</p>
    <p class="col-sm-1 text-right">(姓)</p>
@@ -25,5 +27,6 @@
     <%= f.text_field :first_name_kana, autofocus: true, placeholder: "ミチコ" %>
   </div>
 
-<%= f.submit '変更を保存' ,class: 'btn btn-success'%>
-<% end %>
+  <%= f.submit '変更を保存' ,class: 'btn btn-success'%>
+  <% end %>
+</div>

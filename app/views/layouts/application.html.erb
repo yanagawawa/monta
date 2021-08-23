@@ -12,32 +12,32 @@
 
   <body>
     <header>
-      <nav class="navbar navbar-expand-lg navbar-light">
+      <nav class="navbar navbar-expand-lg navbar-light d-flex align-items-center">
         <div class="container-fluid">
           <%= link_to root_path do %>
           <%= image_tag 'monta.logo.png', size: '300x60' %>
           <% end %>
         </div>
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <ul class="container d-flex flex-column flex-md-row justify-content-between">
           <% if user_signed_in? %>
             <li>ユーザー</li>
-            <li><%= link_to "アバウト", about_path, class: "text-white" %></li>
-            <li><%= link_to "マイページ", user_path(current_user.id), class: "text-white" %></li>
-            <li><%= link_to "レッスン一覧", lessons_path, class: "text-white" %></li>
-            <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "text-white" %></li>
+            <li><%= link_to "アバウト", about_path, class: "text-white py-2 d-none d-md-inline-block btn btn-outline-light" %></li>
+            <li><%= link_to "マイページ", user_path(current_user.id), class: "text-white py-2 d-none d-md-inline-block btn btn-outline-light" %></li>
+            <li><%= link_to "レッスン一覧", lessons_path, class: "text-white py-2 d-none d-md-inline-block btn btn-outline-light" %></li>
+            <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "text-white py-2 d-none d-md-inline-block btn btn-outline-light" %></li>
           <% elsif trainer_signed_in? %>
             <li>トレーナー</li>
-            <li><%= link_to "アバウト",  trainer_about_path, class: "text-white" %></li>
-            <li><%= link_to "マイページ", trainer_trainer_path(current_trainer.id), class: "text-white" %></li>
-            <li><%= link_to "ログアウト", destroy_trainer_session_path, method: :delete, class: "text-white" %></li>
-            <li><%= link_to "レッスンALL", lessons_path, class: "text-white" %></li>
+            <li><%= link_to "アバウト",  trainer_about_path, class: "text-white py-2 d-none d-md-inline-block btn btn-outline-light" %></li>
+            <li><%= link_to "マイページ", trainer_trainer_path(current_trainer.id), class: "text-white py-2 d-none d-md-inline-block btn btn-outline-light" %></li>
+            <li><%= link_to "ログアウト", destroy_trainer_session_path, method: :delete, class: "text-white py-2 d-none d-md-inline-block btn btn-outline-light" %></li>
+            <li><%= link_to "レッスンALL", lessons_path, class: "text-white py-2 d-none d-md-inline-block btn btn-outline-light" %></li>
           <% else %>
             <li>ユーザー</li>
-            <li><%= link_to "アバウト", about_path, class: "text-white" %></li>
-            <li><%= link_to "レッスン一覧", lessons_path, class: "text-white" %></li>
-            <li><%= link_to "新規登録", new_user_registration_path, class: "text-white" %></li>
-            <li><%= link_to "ログイン", new_user_session_path, class: "text-white" %></li>
-            <li><%= link_to "トレーナー", trainer_about_path, class: "text-white" %></li>
+            <li><%= link_to "アバウト", about_path, class: "text-white py-2 d-none d-md-inline-block btn btn-outline-light" %></li>
+            <li><%= link_to "レッスン一覧", lessons_path, class: "text-white py-2 d-none d-md-inline-block btn btn-outline-light" %></li>
+            <li><%= link_to "新規登録", new_user_registration_path, class: "text-white py-2 d-none d-md-inline-block btn btn-outline-light" %></li>
+            <li><%= link_to "ログイン", new_user_session_path, class: "text-white py-2 d-none d-md-inline-block btn btn-outline-light" %></li>
+            <li><%= link_to "トレーナー", trainer_about_path, class: "text-white py-2 d-none d-md-inline-block btn btn-outline-light" %></li>
           <% end %>
         </ul>
       </nav>

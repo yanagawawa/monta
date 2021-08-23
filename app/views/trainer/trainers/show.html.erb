@@ -1,8 +1,7 @@
 <h1>Trainer::Trainers#show</h1>
+<p id="notice"><%= notice %></p>
 <div class="row">
-    <div class="col-2">
-      <%= render'trainer/trainers/sidebar', trainer_name: @trainer %>
-    </div>
+      <%= render'trainer/trainers/sidebar', current_trainer: @trainer %>
     <div class="col-8">
 
 <%= link_to "マイページ", trainer_trainer_path(@trainer) %>
