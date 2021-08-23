@@ -11,14 +11,14 @@ class Lesson < ApplicationRecord
       .genre_is(search_params[:lesson_genre])
       .start_time(search_params[:start_time])
       .start_time_end(search_params[:start_time_end])
-      .prefecture_id_is(search_params[:prefecture_id])
+      .prefecture_id_is(search_params[:prefectures])
   end
 
   scope :title_like, -> (title) { where('title LIKE ?', "%#{title}%") if title.present? }
-  scope :lesson_genre_is, -> (lesson_genre) { where(lesson_genre: lesson_genre) if lesson_genre.present? }
+  scope :genre_is, -> (lesson_genre) { where(lesson_genre: lesson_genre) if lesson_genre.present? }
   scope :start_time, -> (from) { where('? <= start_time', from) if from.present? }
   scope :start_time_end, -> (to) { where('start_time <= ?', to) if to.present? }
-  scope :prefecture_id_is, -> (prefecture_id) { joins(:trainers).where(trainers: { prefecture_id: prefecture_id }) if prefecture_id.present? }
+  scope :prefecture_id_is, -> (prefectures) { joins(:trainer).where(trainers: { prefectures: prefectures }) if prefectures.present? }
 
   geocoded_by :address
   after_validation :geocode

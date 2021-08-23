@@ -17,7 +17,7 @@
 
     <div class="field">
       <%= f.label "都道府県" %>
-      <%= f.select :prefecture, Trainer.prefectures.keys, {}, required: true %>
+      <%= f.select :prefectures, Trainer.prefectures.keys, {}, include_blank: false %>
     </div>
 
     <div class="actions">
