@@ -6,7 +6,7 @@
           <%= room.trainer.last_name %>
           <%= room.trainer.first_name %>
           <%= link_to "×", room_path(room), method: :delete %>
-          <% if @messages != 0 %>
+          <% if @messages.count != 0 %>
             <%= @messages.count %>
           <% end %>
 

@@ -21,23 +21,67 @@
         <ul class="container d-flex flex-column flex-md-row justify-content-between">
           <% if user_signed_in? %>
             <li>ユーザー</li>
-            <li><%= link_to "アバウト", about_path, class: "text-white py-2 d-none d-md-inline-block btn btn-outline-light" %></li>
-            <li><%= link_to "マイページ", user_path(current_user.id), class: "text-white py-2 d-none d-md-inline-block btn btn-outline-light" %></li>
-            <li><%= link_to "レッスン一覧", lessons_path, class: "text-white py-2 d-none d-md-inline-block btn btn-outline-light" %></li>
-            <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "text-white py-2 d-none d-md-inline-block btn btn-outline-light" %></li>
+            <li><%= link_to "アバウト", about_path, class: "text-white py-2 d-none d-md-inline-block btn btn-outline-light rounded-0" %></li>
+            <li><%= link_to "マイページ", user_path(current_user.id), class: "text-white py-2 d-none d-md-inline-block btn btn-outline-light rounded-0" %></li>
+            <li>
+              <div class="dropdown open">
+                <button class="btn btn-outline-light rounded-0 text-white py-2 d-none d-md-inline-block dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown"aria-haspopup="true" aria-expanded="false">
+                  レッスン
+                </button>
+                <div class="dropdown-menu">
+                  <h1 class="dropdown-header">レッスン</h1>
+                  <a><%= link_to "レッスンALL", lessons_path, class: "dropdown-item" %></a>
+                  <a><%= link_to "カレンダー", calendar_path, class: "dropdown-item" %></a>
+                </div>
+              </div>
+            </li>
+            <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "text-white py-2 d-none d-md-inline-block btn btn-outline-light rounded-0" %></li>
           <% elsif trainer_signed_in? %>
             <li>トレーナー</li>
-            <li><%= link_to "アバウト",  trainer_about_path, class: "text-white py-2 d-none d-md-inline-block btn btn-outline-light" %></li>
-            <li><%= link_to "マイページ", trainer_trainer_path(current_trainer.id), class: "text-white py-2 d-none d-md-inline-block btn btn-outline-light" %></li>
-            <li><%= link_to "ログアウト", destroy_trainer_session_path, method: :delete, class: "text-white py-2 d-none d-md-inline-block btn btn-outline-light" %></li>
-            <li><%= link_to "レッスンALL", lessons_path, class: "text-white py-2 d-none d-md-inline-block btn btn-outline-light" %></li>
+            <li><%= link_to "アバウト",  trainer_about_path, class: "text-white py-2 d-none d-md-inline-block btn btn-outline-light rounded-0" %></li>
+            <li><%= link_to "マイページ", trainer_trainer_path(current_trainer.id), class: "text-white py-2 d-none d-md-inline-block btn btn-outline-light rounded-0" %></li>
+            <li><%= link_to "ログアウト", destroy_trainer_session_path, method: :delete, class: "text-white py-2 d-none d-md-inline-block btn btn-outline-light rounded-0" %></li>
+            <li>
+              <div class="dropdown open">
+                <button class="btn btn-outline-light rounded-0 text-white py-2 d-none d-md-inline-block dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown"aria-haspopup="true" aria-expanded="false">
+                  レッスン
+                </button>
+                <div class="dropdown-menu">
+                  <h1 class="dropdown-header">レッスン</h1>
+                  <a><%= link_to "レッスンALL", lessons_path, class: "dropdown-item" %></a>
+                  <a><%= link_to "カレンダー", calendar_path, class: "dropdown-item" %></a>
+                </div>
+              </div>
+            </li>
           <% else %>
             <li>ユーザー</li>
-            <li><%= link_to "アバウト", about_path, class: "text-white py-2 d-none d-md-inline-block btn btn-outline-light" %></li>
-            <li><%= link_to "レッスン一覧", lessons_path, class: "text-white py-2 d-none d-md-inline-block btn btn-outline-light" %></li>
-            <li><%= link_to "新規登録", new_user_registration_path, class: "text-white py-2 d-none d-md-inline-block btn btn-outline-light" %></li>
-            <li><%= link_to "ログイン", new_user_session_path, class: "text-white py-2 d-none d-md-inline-block btn btn-outline-light" %></li>
-            <li><%= link_to "トレーナー", trainer_about_path, class: "text-white py-2 d-none d-md-inline-block btn btn-outline-light" %></li>
+            <li><%= link_to "アバウト", about_path, class: "text-white py-2 d-none d-md-inline-block btn btn-outline-light rounded-0" %></li>
+            <li>
+              <div class="dropdown open">
+                <button class="btn btn-outline-light rounded-0 text-white py-2 d-none d-md-inline-block dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown"aria-haspopup="true" aria-expanded="false">
+                  レッスン
+                </button>
+                <div class="dropdown-menu">
+                  <h1 class="dropdown-header">レッスン</h1>
+                  <a><%= link_to "レッスンALL", lessons_path, class: "dropdown-item" %></a>
+                  <a><%= link_to "カレンダー", calendar_path, class: "dropdown-item" %></a>
+                </div>
+              </div>
+            </li>
+            <li><%= link_to "新規登録", new_user_registration_path, class: "text-white py-2 d-none d-md-inline-block btn btn-outline-light rounded-0" %></li>
+            <li><%= link_to "ログイン", new_user_session_path, class: "text-white py-2 d-none d-md-inline-block btn btn-outline-light rounded-0" %></li>
+            <li>
+              <div class="btn-group dropleft">
+                <button class="btn btn-outline-light rounded-0 text-white py-2 d-none d-md-inline-block dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown"aria-haspopup="true" aria-expanded="false">
+                  トレーナー
+                </button>
+                <div class="dropdown-menu">
+                  <a><%= link_to "トレーナーアバウト", trainer_about_path, class: "dropdown-item" %></a>
+                  <a><%= link_to "トレーナーログイン", new_trainer_session_path, class: "dropdown-item" %></a>
+                  <a><%= link_to "トレーナー新規登録", new_trainer_registration_path, class: "dropdown-item" %></a>
+                </div>
+              </div>
+            </li>
           <% end %>
         </ul>
       </nav>

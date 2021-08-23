@@ -3,7 +3,6 @@ class Public::LessonsController < ApplicationController
   def index
     @lessons = Lesson.where("lessons.start_time > ?", DateTime.now).reorder(:start_time)
     @search_params = lesson_search_params
-    pp @search_params
     @trainers = Lesson.search(@search_params)
     unless @search_params.blank?
       @lessons = @trainers
