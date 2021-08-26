@@ -1,2 +1,4 @@
-<h1>Public::LessonTrainers#index</h1>
-<p>Find me in app/views/public/lesson_trainers/index.html.erb</p>
+
+ <% @trainers.each do |trainer| %>
+ <%= trainer.last_name %>
+ <% end %>

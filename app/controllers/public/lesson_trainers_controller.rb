@@ -5,6 +5,8 @@ class Public::LessonTrainersController < ApplicationController
   end
 
   def index
+    @user = current_user
+    @trainers = @user.trainers
   end
 
   def create

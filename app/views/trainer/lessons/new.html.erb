@@ -25,19 +25,16 @@
 
             <div class="form-inline my-2">
               <div>
-                 <%= f.select :lesson_genre, options_for_select_from_enum(Lesson, :lesson_genre), class: "form-control" %>
+                 <%= f.select :lesson_genre, options_for_select_from_enum(Lesson, :lesson_genre) %>
               </div>
               <div>
-                <%= f.select :take_lesson_genre, options_for_select_from_enum(Lesson, :take_lesson_genre), class: "form-control" %>
+                <%= f.select :take_lesson_genre, options_for_select_from_enum(Lesson, :take_lesson_genre) %>
               </div>
             </div>
 
-            <input type="button" value="住所入力" onclick="hyoji2(0)">
-            <input type="button" value="無し" onclick="hyoji2(1)">
-
             <div id="visi", class="form-group row">
               <%= f.label :address, "住所", class: "col-sm-5" %>
-              <%= f.text_area :address, required: true, class: "form-control" %>
+              <%= f.text_area :address, class: "form-control" %>
             </div>
 
             <div class="form-group row">
@@ -76,16 +73,15 @@
 
 <script>
 
-function hyoji2(num)
-{
-  if (num == 0)
-  {
+var select = document.getElementById("lesson_take_lesson_genre");
+select.addEventListener("change",function(event){
+  console.log(event.target.value)
+  if (event.target.value == "in_person" ||event.target.value == "in_person_personal"){
     document.getElementById("visi").style.visibility="visible";
   }
-  else
-  {
+  else {
     document.getElementById("visi").style.visibility="hidden";
   }
-}
+})
 
 </script>
