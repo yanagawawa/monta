@@ -1,4 +1,10 @@
-チャットルーム
+<div class="row">
+  <% if user_signed_in? %>
+
+      <% elsif trainer_signed_in? %>
+      <%= render'trainer/trainers/sidebar', current_trainer: @trainer %>
+      <% end %>
+   <div class="col-8">
 
 
 <% @messages.each do |message| %>
@@ -25,3 +31,6 @@
     </div>
    <%= f.submit '送信', class: 'form-submit' %>
   <% end %>
+
+  </div>
+  </div>

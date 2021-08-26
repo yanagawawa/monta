@@ -20,7 +20,6 @@
         </div>
         <ul class="container d-flex flex-column flex-md-row justify-content-between">
           <% if user_signed_in? %>
-            <li>ユーザー</li>
             <li><%= link_to "アバウト", about_path, class: "text-white py-2 d-none d-md-inline-block btn btn-outline-light rounded-0" %></li>
             <li><%= link_to "マイページ", user_path(current_user.id), class: "text-white py-2 d-none d-md-inline-block btn btn-outline-light rounded-0" %></li>
             <li>
@@ -37,10 +36,8 @@
             </li>
             <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "text-white py-2 d-none d-md-inline-block btn btn-outline-light rounded-0" %></li>
           <% elsif trainer_signed_in? %>
-            <li>トレーナー</li>
             <li><%= link_to "アバウト",  trainer_about_path, class: "text-white py-2 d-none d-md-inline-block btn btn-outline-light rounded-0" %></li>
             <li><%= link_to "マイページ", trainer_trainer_path(current_trainer.id), class: "text-white py-2 d-none d-md-inline-block btn btn-outline-light rounded-0" %></li>
-            <li><%= link_to "ログアウト", destroy_trainer_session_path, method: :delete, class: "text-white py-2 d-none d-md-inline-block btn btn-outline-light rounded-0" %></li>
             <li>
               <div class="dropdown">
                 <button class="btn btn-outline-light rounded-0 text-white py-2 d-none d-md-inline-block dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -53,8 +50,8 @@
                 </div>
               </div>
             </li>
+            <li><%= link_to "ログアウト", destroy_trainer_session_path, method: :delete, class: "text-white py-2 d-none d-md-inline-block btn btn-outline-light rounded-0" %></li>
           <% else %>
-            <li>ユーザー</li>
             <li><%= link_to "アバウト", about_path, class: "text-white py-2 d-none d-md-inline-block btn btn-outline-light rounded-0" %></li>
             <li>
               <div class="dropdown">
@@ -86,9 +83,21 @@
         </ul>
       </nav>
     </header>
+    <% if user_signed_in? %>
+        <div class="user_header"></div>
+      <% elsif trainer_signed_in? %>
+        <div class="trainer_header"></div>
+      <% else %>
+      <% end %>
     <main>
       <%= yield %>
     </main>
+    <% if user_signed_in? %>
+        <div class="user_footer"></div>
+      <% elsif trainer_signed_in? %>
+        <div class="trainer_footer"></div>
+      <% else %>
+      <% end %>
     <footer class="pt-5 pb-4">
       <div class="container">
         <div class="text-center text-white">CopyRight Yanagawa</div>

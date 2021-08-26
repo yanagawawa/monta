@@ -7,6 +7,13 @@
     <!--条件分岐、レッスン投稿したトレーナーだったら-->
     <% if current_trainer.present? %>
       <%= link_to "レッスン編集", edit_trainer_lesson_path(@lesson), class: "btn btn-info text-white" %>
+
+      <%= form_with model: @lesson, url: trainer_lesson_path(@lesson.id), local: true do |f| %>
+        <%= f.label :lesson_status, "レッスンステータス" %><br>
+        <%= f.select :lesson_status, options_for_select_from_enum(Lesson, :lesson_status), class: "form-control col-sm-12" %><br>
+        <%= f.submit '編集', class: "btn btn-danger" %>
+      <% end %>
+
     <% end %>
     <!--条件分岐、ユーザーだった場合-->
     <% if current_user.present? %>
@@ -90,26 +97,23 @@
             <th>レッスン方法</th>
             <td><%= @lesson.take_lesson_genre_i18n %></td>
           </tr>
-      </tbody>
-    </table>
 
     <% if @lesson.address.blank? %>
+          <tr>
+            <th scope="row">開催場所</th>
+            <td>オンライン</td>
+          </tr>
 
     <% else %>
-      <table class="table">
-        <tbody>
           <tr>
             <th scope="row">開催場所</th>
             <td><%= @lesson.address %></td>
           </tr>
-        </tbody>
-      </table>
-      <div><%= @lesson.address %></div>
-      <div id='map' class="d-block mx-auto img-fluid w-50"></div>
+          <tr>
+            <td colspan="2"><div id='map' class="d-block mx-auto img-fluid w-50"></div></td>
+          </tr>
     <% end %>
 
-    <table class="table">
-      <tbody>
         <tr>
           <th scope="row">開催日時</th>
           <td><%= l @lesson.start_time, format: :default %></td>

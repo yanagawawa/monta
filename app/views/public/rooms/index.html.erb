@@ -1,4 +1,10 @@
-チャットルーム一覧
+<div class="row">
+  <% if user_signed_in? %>
+
+      <% elsif trainer_signed_in? %>
+      <%= render'trainer/trainers/sidebar', current_trainer: @trainer %>
+      <% end %>
+   <div class="col-8">
 
 <% @rooms.each do |room| %>
     <% if current_user.present? %>
@@ -22,3 +28,5 @@
         <% end %>
     <% end %>
 <% end %>
+</div>
+</div>

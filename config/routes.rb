@@ -14,8 +14,9 @@ Rails.application.routes.draw do
     }
 
   namespace :trainer do
-    resources :trainers, only: [:show, :edit, :update]
+
     get 'trainers/history' => 'trainers#history'
+    resources :trainers, only: [:show, :edit, :update]
     resources :lessons, only: [:new, :create, :edit, :update]
   end
 

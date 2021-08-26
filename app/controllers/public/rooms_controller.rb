@@ -4,13 +4,17 @@ class Public::RoomsController < ApplicationController
     if current_user.present?
       @rooms = Room.where(user_id: current_user.id)
       @messages = Message.where(sender: false, is_read: false)
+      @user = current_user
     elsif current_trainer.present?
       @rooms = Room.where(trainer_id: current_trainer.id)
       @messages = Message.where(sender: true, is_read: false)
+      @trainer = current_trainer
     end
   end
 
   def show
+    @user = current_user
+    @trainer = current_trainer
     @message = Message.new
     @message.user = current_user
     @message.trainer = current_trainer

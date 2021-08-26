@@ -1,6 +1,7 @@
 class Trainer::TrainersController < ApplicationController
   def show
     @trainer = current_trainer
+    @today_lessons = Lesson.where("lessons.start_time == ?", Date.today).reorder(:start_time)
   end
 
   def edit
@@ -17,6 +18,8 @@ class Trainer::TrainersController < ApplicationController
   end
 
   def history
+    @trainer = current_trainer
+    @lessons = @trainer.lessons
   end
 
   private
