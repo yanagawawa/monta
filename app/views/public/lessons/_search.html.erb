@@ -1,27 +1,39 @@
-<div class="search-form">
-  <%= form_with(scope: :search, url: lessons_path, method: :get, local: true) do |f| %>
-    <div class="field">
-      <%= f.label "タイトル" %>
-      <%= f.text_field :title, value: @search_params[:title] %>
-    </div>
+<nav class="col-2 d-none d-md-block bg-light sidebar">
+    <div class="sidebar-sticky">
+      <div class="search-form container">
+        <h4>検索フォーム</h4>
+        <%= form_with(scope: :search, url: lessons_path, method: :get, local: true) do |f| %>
 
-    <div class="field">
-      <%= f.label "カテゴリ" %>
-      <%= f.collection_radio_buttons(:lesson_genre, Lesson.lesson_genres_i18n, :first , :last) %>
-    </div>
+          <div class="row">
+          <div class="field col">
+            <%= f.label "タイトル" %>
+            <%= f.text_field :title, value: @search_params[:title] %>
+          </div>
 
-    <div class="field">
-      <%= f.label "日時" %>
-      <%= f.date_field :start_time, value: @search_params[:start_time] %> ~ <%= f.date_field :start_time_end, value: @search_params[:start_time_end] %>
-    </div>
+          <div class="field">
+            <%= f.label "カテゴリ" %>
+            <p>
+            <%= f.collection_radio_buttons(:lesson_genre, Lesson.lesson_genres_i18n, :first , :last) %>
+          </p>
+          </div>
 
-    <div class="field">
-      <%= f.label "都道府県" %>
-      <%= f.select :prefectures, Trainer.prefectures.keys, {}, include_blank: false %>
-    </div>
+          <div class="field">
+            <%= f.label "日時" %>
+            <%= f.date_field :start_time, value: @search_params[:start_time] %>
+            <span class="spin">〜</span>
+            <%= f.date_field :start_time_end, value: @search_params[:start_time_end] %>
+          </div>
 
-    <div class="actions">
-     <%= f.submit '変更を保存' ,class: 'btn btn-success'%>
+          <div class="field">
+            <%= f.label "都道府県" %>
+            <%= f.select :prefectures, Trainer.prefectures.keys, {}, include_blank: false %>
+          </div>
+
+          <div class="actions">
+           <%= f.submit '検索' ,class: 'btn btn-success'%>
+          </div>
+          </div>
+        <% end %>
+      </div>
     </div>
-  <% end %>
-</div>
+  </nav>

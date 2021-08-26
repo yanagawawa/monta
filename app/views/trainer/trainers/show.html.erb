@@ -1,13 +1,32 @@
-<h1>Trainer::Trainers#show</h1>
-<p id="notice"><%= notice %></p>
-<div class="row">
+
+   <div class="row">
       <%= render'trainer/trainers/sidebar', current_trainer: @trainer %>
-    <div class="col-8">
+   <div class="col-8">
+      <p id="notice"><%= notice %></p>
+      <h3>トレーナー　<%= @trainer.last_name %>　様のページ</h3>
 
-<%= link_to "マイページ", trainer_trainer_path(@trainer) %>
-<%= link_to "トレーナー編集", edit_trainer_trainer_path(@trainer) %>
+      <ul class="nav nav-tabs" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="trainer1-tab" data-toggle="tab" href="#trainer1" role="tab" aria-controls="trainer1" aria-selected="true">今日のレッスン</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="trainer2-tab" data-toggle="tab" href="#trainer2" role="tab" aria-controls="trainer2" aria-selected="false">未開催のレッスン</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="trainer3-tab" data-toggle="tab" href="#trainer3" role="tab" aria-controls="trainer3" aria-selected="false">トレーナーステータス</a>
+  </li>
+</ul>
+<div class="tab-content">
+  <div class="tab-pane fade show active" id="trainer1" role="tabpanel" aria-labelledby="trainer1-tab">
+     </div>
+  <div class="tab-pane fade" id="trainer2" role="tabpanel" aria-labelledby="trainer2-tab">This is a text of item#2.</div>
+  <div class="tab-pane fade" id="trainer3" role="tabpanel" aria-labelledby="trainer3-tab">This is a text of item#3.</div>
+  </div>
 
-<%= @trainer.first_name %>
+   <%= link_to "マイページ", trainer_trainer_path(@trainer) %>
+   <%= link_to "トレーナー編集", edit_trainer_trainer_path(@trainer) %>
+
+
 
 </div>
 </div>

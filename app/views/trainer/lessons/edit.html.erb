@@ -1,6 +1,6 @@
 レッスン編集
 <%= form_with model: @lesson, url: trainer_lesson_path(@lesson.id), local: true do |f| %>
-<%= render 'layouts/error_messages', model: f.object %>
+<%#= render 'layouts/error_messages', model: f.object %>
 <h4>タイトル</h4>
   <%= f.text_field :title %>
   <h4>レッスンひと言</h4>
