@@ -1,17 +1,17 @@
-<div class="text-center">
+<div class="text-center my-3">
     <h2>ログイン</h2>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <table class="row justify-content-md-center">
         <tbody>
           <tr>
             <td class="form-floating">
-              <%= f.label :email %><br />
+              <%= f.label "メールアドレス" %><br />
               <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "name@example.com", class: "form-control" %>
             </td>
           </tr>
           <tr>
             <td class="form-floating">
-              <%= f.label :password %><br />
+              <%= f.label "パスワード" %><br />
               <%= f.password_field :password, autocomplete: "current-password", placeholder: "Password", class: "form-control",  size: "1x10" %>
             </td>
           </tr>
@@ -25,7 +25,7 @@
           </tr>
           <tr>
             <td class="actions">
-              <%= f.submit "Log in", class: "btn btn-lg btn-primary btn-block" %>
+              <%= f.submit "ログイン", class: "btn btn-lg btn-primary btn-block" %>
             </td>
           </tr>
         </tbody>

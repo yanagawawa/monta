@@ -1,45 +1,44 @@
 <div class="row">
 
-  <%= render'public/users/sidebar', current_user: @user %>
-  <div class="col-8">
-    <% @lessons.each do |lesson| %>
-<div class="container">
-<div class="row">
+    <%= render'public/users/sidebar', current_user: @user %>
+    <div class="col-8">
+      <% @lessons.each do |lesson| %>
+        <div class="container">
+          <div class="row">
             <div  class="col-md-3 text-center d-flex align-items-center">
               <h4>
               <%= lesson.reserves.find_by(user_id: current_user.id).take_lesson_status_i18n %>
               </h4>
             </div>
-              <div class="col-md-9 border">
+            <div class="col-md-9 border my-3">
               <div class="row align-items-start">
-
-              <div class="col">
-                <%= lesson.lesson_genre_i18n %>
+                <div class="col text-center border-bottom border-right">
+                  <%= lesson.lesson_genre_i18n %>
+                </div>
+                <div class="col text-center border-bottom">
+                  <%= lesson.take_lesson_genre_i18n %>
+                </div>
               </div>
-              <div class="col text-right">
-                <%= lesson.take_lesson_genre_i18n %>
-              </div>
-            </div>
-            <div class="media">
-              <div class="mr-3">
-                <%= link_to lesson_path(lesson) do %>
-                  <%= attachment_image_tag lesson.trainer, :profile_image, :fill, 150, 150, format: 'jpeg', fallback: "no_image.jpg",size: "150x150" %>
-                <% end %>
-              </div>
-              <div class="media-body">
-                <h3>
+              <div class="media">
+                <div class="m-3">
                   <%= link_to lesson_path(lesson) do %>
-                    <%= lesson.title %>
+                    <%= attachment_image_tag lesson.trainer, :profile_image, :fill, 150, 150, format: 'jpeg', fallback: "no_image.jpg",size: "150x150" %>
                   <% end %>
-                </h3>
-                <h4>担当トレーナー:  <%= lesson.trainer.last_name %><%= lesson.trainer.first_name %></h4>
-                <p><%= l lesson.start_time, format: :default %>  (<%= lesson.total_time %>分)</p>
-                <p><%= lesson.lesson_word %></p>
+                </div>
+                <div class="media-body m-3">
+                  <h3>
+                    <%= link_to lesson_path(lesson) do %>
+                      <%= lesson.title %>
+                    <% end %>
+                  </h3>
+                  <h4>担当トレーナー:  <%= lesson.trainer.last_name %><%= lesson.trainer.first_name %></h4>
+                  <p><%= l lesson.start_time, format: :default %>  (<%= lesson.total_time %>分)</p>
+                  <p><%= lesson.lesson_word %></p>
+                </div>
               </div>
             </div>
-            </div>
           </div>
-          </div>
-<% end %>
-  	</div>
-  	</div>
+        </div>
+      <% end %>
+    </div>
+  </div>
