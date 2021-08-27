@@ -6,6 +6,8 @@
       <% end %>
    <div class="col-8">
 
+     <h3>メッセージ一覧</h3>
+
 <% @rooms.each do |room| %>
     <% if current_user.present? %>
     <div class="row">
@@ -27,14 +29,22 @@
         </div>
 
     <% elsif current_trainer.present? %>
-        <%= link_to room_path(room.id) do %>
-          <%= room.user.last_name %>
-          <%= room.user.first_name %>
-          <%= link_to "×", room_path(room), method: :delete %>
-          <% if @messages.count != 0 %>
-            <%= @messages.count %>
-          <% end %>
-        <% end %>
+
+<div class="row">
+         <div class="col-6 text-center">
+            <% if @messages.count != 0 %>
+              <%= @messages.count %>
+            <% end %>
+            <%= link_to room_path(room.id) do %>
+            <%= room.user.last_name %>
+            <%= room.user.first_name %>
+           <% end %>
+           <%= link_to "×", room_path(room), method: :delete %>
+          </div>
+          </div>
+
+
+
     <% end %>
 <% end %>
 </div>

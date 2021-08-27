@@ -2,6 +2,10 @@ class Public::LessonsController < ApplicationController
 
   def index
     @lessons = Lesson.where("lessons.start_time > ?", DateTime.now).reorder(:start_time)
+    @lessons_in_person = Lesson.where("lessons.start_time > ?", DateTime.now).reorder(:start_time).where(take_lesson_genre: "in_person")
+    @lessons_in_person_personal = Lesson.where("lessons.start_time > ?", DateTime.now).reorder(:start_time).where(take_lesson_genre: "in_person_personal")
+    @lessons_live = Lesson.where("lessons.start_time > ?", DateTime.now).reorder(:start_time).where(take_lesson_genre: "live")
+    @lessons_online_personal = Lesson.where("lessons.start_time > ?", DateTime.now).reorder(:start_time).where(take_lesson_genre: "online_personal")
     @search_params = lesson_search_params
     @trainers = Lesson.search(@search_params)
     unless @search_params.blank?
