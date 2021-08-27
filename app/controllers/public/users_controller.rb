@@ -5,8 +5,7 @@ class Public::UsersController < ApplicationController
   end
 
   def history
-
-
+    @user = current_user
   end
 
   def edit

@@ -9,6 +9,20 @@
     <div>
       <%= attachment_image_tag @trainer, :profile_image, :fill, 200, 200, format: 'jpeg', fallback: "no_image.jpg",size: "200x200" %>
     </div>
+    <% if @relationships.present? %>
+
+        <%= form_with model: @relationships, url: relationship_path(@relationships), method: :delete do |f| %>
+          <%= f.submit "Unfollow", class: "btn btn-large follow-btn" %>
+        <% end %>
+          <%= link_to "DMを始める", new_room_path(trainer_id: @trainer.id) %>
+      <% else %>
+          <%= form_with model: @relationship, url: relationships_path do |f| %>
+            <div><%= f.hidden_field :trainer_id %></div>
+            <div><%= f.hidden_field :user_id %></div>
+            <%= f.submit "Follow", class: "btn btn-large btn-primary follow-btn" %>
+          <% end %>
+          <div>フォローするとDMができます</div>
+        <% end %>
   </div>
   <div class="col-8 text-center m-3">
     <div class="">

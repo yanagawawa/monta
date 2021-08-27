@@ -1,6 +1,6 @@
 <div class="row">
   <% if user_signed_in? %>
-
+<%= render'public/users/sidebar', current_user: @user %>
       <% elsif trainer_signed_in? %>
       <%= render'trainer/trainers/sidebar', current_trainer: @trainer %>
       <% end %>
