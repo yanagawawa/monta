@@ -30,8 +30,6 @@
                     <% case @lesson.reserves.find_by(user_id: current_user.id).take_lesson_status %>
                         <% when 'not_held' then %>
                             <div>予約済み</div>
-                            <%# canceled_reserve = @lesson.reserves.find_by(user_id: current_user.id) %>
-                            <%# canceled_reserve.take_lesson_status = "cancel" %>
                             <%= form_with model: @lesson.reserves.find_by(user_id: current_user.id), local: true do |f| %>
                                 <%= f.hidden_field :take_lesson_status, value: "cancel" %>
                                 <%= f.submit 'レッスンをキャンセルする', class: "btn btn-danger" %>
@@ -180,4 +178,4 @@
   }
 </script>
 
-<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['SECRET_KEY'] %>&callback=initMap" async defer></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API'] %>&callback=initMap" async defer></script>
