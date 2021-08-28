@@ -5,6 +5,21 @@ class Lesson < ApplicationRecord
   has_many :reserves, dependent: :destroy
   has_many :users, through: :reserves
 
+   scope :search, -> (search_params) do      #scopeでsearchメソッドを定義。(search_params)は引数
+    return if search_params.blank?      #検索フォームに値がなければ以下の手順は行わない
+     title_like(search_params[:title])
+      .genre_is(search_params[:lesson_genre])
+      .start_time(search_params[:start_time])
+      .start_time_end(search_params[:start_time_end])
+      .prefecture_id_is(search_params[:prefectures])
+  end
+
+  scope :title_like, -> (title) { where('title LIKE ?', "%#{title}%") if title.present? }
+  scope :genre_is, -> (lesson_genre) { where(lesson_genre: lesson_genre) if lesson_genre.present? }
+  scope :start_time, -> (from) { where('? <= start_time', from) if from.present? }
+  scope :start_time_end, -> (to) { where('start_time < ?', to) if to.present? }
+  scope :prefecture_id_is, -> (prefectures) { joins(:trainer).where(trainers: { prefectures: prefectures }) if prefectures != "---" }
+
   geocoded_by :address
   after_validation :geocode
 
@@ -27,7 +42,11 @@ class Lesson < ApplicationRecord
   enum lesson_status: { not_held: 0, held: 1, cancel: 2 }
 
   validate :date_validation
-  validate :start_check
+  validate :start_check, if: :is_not_held_status?
+
+  def is_not_held_status?
+    lesson_status == "not_held"
+  end
 
   def date_validation
     if self.start_time >= self.end_time

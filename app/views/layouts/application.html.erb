@@ -11,37 +11,101 @@
   </head>
 
   <body>
-     <header>
-      <nav>
-        <div>
+     <% if user_signed_in? %>
+        <header class="user_signed_in">
+      <% elsif trainer_signed_in? %>
+        <header class="trainer_signed_in">
+      <% else %>
+      <header>
+      <% end %>
+      <nav class="navbar navbar-expand-lg navbar-light d-flex align-items-center">
+        <div class="container-fluid">
           <%= link_to root_path do %>
-          <%= image_tag 'monta_logo.png' %>
+          <%= image_tag 'monta.logo.png', size: '300x60' %>
           <% end %>
         </div>
-        <ul>
+        <ul class="container d-flex flex-column flex-md-row justify-content-between">
           <% if user_signed_in? %>
-            <li>ユーザー</li>
-            <li><%= link_to "アバウト", about_path %></li>
-            <li><%= link_to "マイページ", user_path(current_user.id) %></li>
-            <li><%= link_to "レッスン一覧", lessons_path %></li>
-            <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+            <li><%= link_to "アバウト", about_path, class: "text-white py-2 d-none d-md-inline-block btn btn-outline-light rounded-0" %></li>
+            <li><%= link_to "マイページ", user_path(current_user.id), class: "text-white py-2 d-none d-md-inline-block btn btn-outline-light rounded-0" %></li>
+            <li>
+              <div class="dropdown open">
+                <button class="btn btn-outline-light rounded-0 text-white py-2 d-none d-md-inline-block dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown"aria-haspopup="true" aria-expanded="false">
+                  レッスン
+                </button>
+                <div class="dropdown-menu">
+                  <h1 class="dropdown-header">レッスン</h1>
+                  <%= link_to "レッスンALL", lessons_path, class: "dropdown-item" %>
+                  <%= link_to "カレンダー", calendar_path, class: "dropdown-item" %>
+                </div>
+              </div>
+            </li>
+            <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "text-white py-2 d-none d-md-inline-block btn btn-outline-light rounded-0" %></li>
           <% elsif trainer_signed_in? %>
-            <li>トレーナー</li>
-            <li><%= link_to "アバウト",  trainer_about_path %></li>
-            <li><%= link_to "マイページ", trainer_trainer_path(current_trainer.id) %></li>
-            <li><%= link_to "ログアウト", destroy_trainer_session_path, method: :delete %></li>
-            <li><%= link_to "レッスンALL", lessons_path %></li>
+            <li><%= link_to "アバウト",  trainer_about_path, class: "text-white py-2 d-none d-md-inline-block btn btn-outline-light rounded-0" %></li>
+            <li><%= link_to "マイページ", trainer_trainer_path(current_trainer.id), class: "text-white py-2 d-none d-md-inline-block btn btn-outline-light rounded-0" %></li>
+            <li>
+              <div class="dropdown">
+                <button class="btn btn-outline-light rounded-0 text-white py-2 d-none d-md-inline-block dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  レッスン
+                </button>
+                <div class="dropdown-menu">
+                  <h1 class="dropdown-header">レッスン</h1>
+                  <%= link_to "レッスンALL", lessons_path, class: "dropdown-item" %>
+                  <%= link_to "カレンダー", calendar_path, class: "dropdown-item" %>
+                </div>
+              </div>
+            </li>
+            <li><%= link_to "ログアウト", destroy_trainer_session_path, method: :delete, class: "text-white py-2 d-none d-md-inline-block btn btn-outline-light rounded-0" %></li>
           <% else %>
-            <li>ユーザー</li>
-            <li><%= link_to "アバウト", about_path %></li>
-            <li><%= link_to "レッスン一覧", lessons_path %></li>
-            <li><%= link_to "新規登録", new_user_registration_path %></li>
-            <li><%= link_to "ログイン", new_user_session_path %></li>
-            <li><%= link_to "トレーナー", trainer_about_path %></li>
+            <li><%= link_to "アバウト", about_path, class: "text-white py-2 d-none d-md-inline-block btn btn-outline-light rounded-0" %></li>
+            <li>
+              <div class="dropdown">
+                <button class="btn btn-outline-light rounded-0 text-white py-2 d-none d-md-inline-block dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  レッスン
+                </button>
+                <div class="dropdown-menu">
+                  <h1 class="dropdown-header">レッスン</h1>
+                  <%= link_to "レッスンALL", lessons_path, class: "dropdown-item" %>
+                  <%= link_to "カレンダー", calendar_path, class: "dropdown-item" %>
+                </div>
+              </div>
+            </li>
+            <li><%= link_to "新規登録", new_user_registration_path, class: "text-white py-2 d-none d-md-inline-block btn btn-outline-light rounded-0" %></li>
+            <li><%= link_to "ログイン", new_user_session_path, class: "text-white py-2 d-none d-md-inline-block btn btn-outline-light rounded-0" %></li>
+            <li>
+              <div class="btn-group dropleft">
+                <button class="btn btn-outline-light rounded-0 text-white py-2 d-none d-md-inline-block dropdown-toggle" type="button" id="dropdownMenu4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  トレーナー
+                </button>
+                <div class="dropdown-menu">
+                  <%= link_to "トレーナーアバウト", trainer_about_path, class: "dropdown-item" %>
+                  <%= link_to "トレーナーログイン", new_trainer_session_path, class: "dropdown-item" %>
+                  <%= link_to "トレーナー新規登録", new_trainer_registration_path, class: "dropdown-item" %>
+                </div>
+              </div>
+            </li>
           <% end %>
         </ul>
       </nav>
     </header>
-    <%= yield %>
+
+    <main>
+      <%= yield %>
+    </main>
+
+
+    <% if user_signed_in? %>
+        <footer class="user_signed_in pt-5 pb-4">
+      <% elsif trainer_signed_in? %>
+        <footer class="trainer_signed_in pt-5 pb-4">
+      <% else %>
+      <footer class="pt-5 pb-4">
+      <% end %>
+      <div class="container">
+        <div class="text-center text-white">CopyRight Yanagawa</div>
+       </div>
+    </footer>
+
   </body>
 </html>

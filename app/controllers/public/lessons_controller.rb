@@ -1,9 +1,16 @@
 class Public::LessonsController < ApplicationController
 
   def index
-    @lessons = Lesson.where("lessons.start_time > ?", DateTime.now).reorder(:start_time)
+    @lessons = Lesson.where("lessons.start_time >= ?", Date.today).reorder(:start_time).where(lesson_status: "not_held")
+    @lessons_in_person = Lesson.where("lessons.start_time >= ?", Date.today).reorder(:start_time).where(take_lesson_genre: "in_person").where(lesson_status: "not_held")
+    @lessons_in_person_personal = Lesson.where("lessons.start_time >= ?", Date.today).reorder(:start_time).where(take_lesson_genre: "in_person_personal").where(lesson_status: "not_held")
+    @lessons_live = Lesson.where("lessons.start_time >= ?", Date.today).reorder(:start_time).where(take_lesson_genre: "live").where(lesson_status: "not_held")
+    @lessons_online_personal = Lesson.where("lessons.start_time >= ?", Date.today).reorder(:start_time).where(take_lesson_genre: "online_personal").where(lesson_status: "not_held")
     @search_params = lesson_search_params
-    # @trainers = Lesson.search(@search_params).where(prefecture: params[:])
+    @trainers = (params[:start_time].present? && params[:start_time_end].present?)?  Lesson.where("start_time >= ? AND start_time < ?",Date.parse(params[:start_time]), Date.parse(params[:start_time])+1) :Lesson.search(@search_params)
+    if (params[:start_time].present? && params[:start_time_end].present?) || @search_params.present?
+      @lessons = @trainers
+    end
   end
 
   def show
@@ -24,7 +31,7 @@ class Public::LessonsController < ApplicationController
   private
 
   def lesson_search_params
-    params.fetch(:search, {}).permit(:trainer_id, :lesson_genre, :take_lesson_genre, :title, :lesson_word, :start_time, :start_time_end, :total_time, :total_people, :lesson_details, :belongings, :lesson_status, :address)
+    params.fetch(:search, {}).permit(:prefectures, :trainer_id, :lesson_genre, :take_lesson_genre, :title, :lesson_word, :start_time, :start_time_end, :total_time, :total_people, :lesson_details, :belongings, :lesson_status, :address)
   end
 
 end

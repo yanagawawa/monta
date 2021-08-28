@@ -15,6 +15,48 @@
  *= require simple_calendar
  */
 
+ nav{
+   background-color: #080958
+ }
+
+
+ body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+footer {
+  margin-top: auto;
+  background-color: #080958
+}
+
+.spin{
+ writing-mode: vertical-rl;
+}
+
+.trainer_signed_in{
+ border-bottom: solid 5px #FCD500;
+ border-top: solid 5px #FCD500;
+}
+
+.user_signed_in{
+ border-bottom: solid 5px #1974D2;
+ border-top: solid 5px #1974D2;
+}
+
+
+.sidebar{
+position: -webkit-sticky;
+position: sticky;
+bottom: 0;
+
+}
+
+a.sidebar_size{
+ font-size: 20px;
+}
+
 @import "bootstrap";
 @import 'font-awesome-sprockets';
 @import 'font-awesome';

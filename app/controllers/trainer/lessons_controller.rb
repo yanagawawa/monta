@@ -27,8 +27,10 @@ class Trainer::LessonsController < ApplicationController
     @lesson.total_time = @lesson.lesson_total_time(@lesson.start_time, @lesson.end_time).round
     @lesson.trainer = current_trainer
     if @lesson.update(lesson_params)
-      if params[:lesson][:lessson_status] == "cancel"
-        @lesson.reserve.update(take_lesson_status: "cancel")
+      if lesson_params[:lesson_status] == "held"
+        @lesson.reserves.where(take_lesson_status: "not_held").update_all(take_lesson_status: "held")
+      elsif lesson_params[:lesson_status] == "cancel"
+        @lesson.reserves.update_all(take_lesson_status: "cancel")
       end
      redirect_to lesson_path(@lesson.id)
     else
