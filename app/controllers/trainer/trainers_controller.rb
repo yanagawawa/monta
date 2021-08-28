@@ -1,4 +1,5 @@
 class Trainer::TrainersController < ApplicationController
+  before_action :authenticate_trainer!
   def show
     @trainer = current_trainer
     @today_lessons = Lesson.where("lessons.start_time >= ? AND lessons.start_time < ?", Date.today,Date.today+1).reorder(:start_time).where("lesson_status = 0")

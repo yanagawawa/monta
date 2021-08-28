@@ -1,4 +1,5 @@
 class Public::RoomsController < ApplicationController
+before_action :authenticate_user! || :authenticate_trainer!
 
   def index
     if current_user.present?

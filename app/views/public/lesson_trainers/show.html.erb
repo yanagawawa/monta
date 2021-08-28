@@ -1,21 +1,22 @@
 <div class="row">
       <div class="col-3 d-none d-md-block m-3">
 
-         <h6>【氏名】</h6>
-         <h1>
+         <h6 class="text-center mt-3">【トレーナー名】</h6>
+         <h1 class="text-center">
             <%= @trainer.last_name %>
             <%= @trainer.first_name %>
          </h1>
-         <div>
+         <div class="text-center">
             <%= attachment_image_tag @trainer, :profile_image, :fill, 200, 200, format: 'jpeg', fallback: "no_image.jpg",size: "200x200" %>
          </div>
+         <div class="text-center">
          <% if current_user.present? %>
             <% if @relationships.present? %>
 
                <%= form_with model: @relationships, url: relationship_path(@relationships), method: :delete do |f| %>
-                  <%= f.submit "Unfollow", class: "btn btn-large follow-btn" %>
+                  <%= f.submit "Unfollow", class: "btn btn-secondary my-2" %>
                <% end %>
-               <%= link_to "DMを始める", new_room_path(trainer_id: @trainer.id) %>
+               <%= link_to "DMを始める", new_room_path(trainer_id: @trainer.id),class: "btn btn-outline-success" %>
             <% else %>
                <%= form_with model: @relationship, url: relationships_path do |f| %>
                   <div><%= f.hidden_field :trainer_id %></div>
@@ -25,16 +26,17 @@
                <div>フォローするとDMができます</div>
             <% end %>
          <% end %>
+         </div>
       </div>
       <div class="col-8 text-center m-3">
-         <div>
+         <div class="mb-4">
             <%= attachment_image_tag @trainer, :pr_image, format: 'jpeg', fallback: "no-image-pr.jpg", class: "pr_image" %>
          </div>
-         <h6>【PR】</h6>
+         <h5>【PR】</h5>
          <p><%= @trainer.pr_comment %></p>
-         <h6>【都道府県】</h6>
+         <h5>【都道府県】</h5>
          <p><%= @trainer.prefectures %></p>
-         <h6>【資格・実績】</h6>
+         <h5>【資格・実績】</h5>
          <p><%=safe_join(@trainer.result.split("\n"),tag(:br))%></p>
         </div>
 </div>

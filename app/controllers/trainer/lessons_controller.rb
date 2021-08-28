@@ -1,5 +1,5 @@
 class Trainer::LessonsController < ApplicationController
-
+before_action :authenticate_trainer!
   def new
    @lesson = Lesson.new
    @trainer = current_trainer
