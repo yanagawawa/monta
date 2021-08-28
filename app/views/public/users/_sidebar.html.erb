@@ -1,9 +1,9 @@
 <nav class="col-md-2 d-none d-md-block bg-light sidebar">
     <div class="sidebar-sticky" style="height: 100vh;">
-      <h2>
+      <h2 class="mt-4 text-center">
         <%= current_user.last_name %>様
       </h2>
-      <ul class="nav flex-column">
+      <ul class="nav flex-column text-center">
         <li class="nav-item my-2"><%= link_to "マイページ", user_path(current_user.id), class: "sidebar_size" %></li>
         <li class="nav-item my-2"><%= link_to "履歴一覧", history_path, class: "sidebar_size" %></li>
         <li class="nav-item my-2"><%= link_to "フォローリスト", lesson_trainers_path, class: "sidebar_size" %></li>

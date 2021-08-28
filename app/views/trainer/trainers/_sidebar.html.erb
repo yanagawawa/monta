@@ -1,15 +1,15 @@
 
 <nav class="col-md-2 d-none d-md-block bg-light sidebar">
     <div class="sidebar-sticky" style="height: 100vh;">
-      <h2>
+      <h2 class="mt-4 text-center">
         <%= current_trainer.last_name %>様
       </h2>
-      <ul class="nav flex-column">
-        <li class="nav-item"><%= link_to "マイページ", trainer_trainer_path(current_trainer.id), class: "sidebar_size" %></li>
-        <li class="nav-item"><%= link_to "レッスン作成", new_trainer_lesson_path, class: "sidebar_size" %></li>
-        <li class="nav-item"><%= link_to "レッスン履歴", trainer_trainers_history_path, class: "sidebar_size" %></li>
-        <li class="nav-item"><%= link_to "メッセージ", rooms_path, class: "sidebar_size" %></li>
-        <li class="nav-item"><%= link_to "トレーナー編集", edit_trainer_trainer_path(current_trainer.id), class: "sidebar_size" %></li>
+      <ul class="nav flex-column text-center">
+        <li class="nav-item my-2"><%= link_to "マイページ", trainer_trainer_path(current_trainer.id), class: "sidebar_size" %></li>
+        <li class="nav-item my-2"><%= link_to "レッスン作成", new_trainer_lesson_path, class: "sidebar_size" %></li>
+        <li class="nav-item my-2"><%= link_to "レッスン履歴", trainer_trainers_history_path, class: "sidebar_size" %></li>
+        <li class="nav-item my-2"><%= link_to "メッセージ", rooms_path, class: "sidebar_size" %></li>
+        <li class="nav-item my-2"><%= link_to "トレーナー編集", edit_trainer_trainer_path(current_trainer.id), class: "sidebar_size" %></li>
       </ul>
     </div>
 </nav>

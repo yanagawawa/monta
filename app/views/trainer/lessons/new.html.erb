@@ -2,7 +2,7 @@
     <%= render'trainer/trainers/sidebar', trainer_name: @trainer %>
     <div class="col-8">
 
-        <h5>新規レッスン作成</h5>
+      <h2 class="mt-5 text-center">新規レッスン作成</h2>
       <%= form_with model:@lesson, url:'/trainer/lessons', local:true do |f| %>
         <%= render 'layouts/errors', model: f.object %>
         <div class="row justify-content-md-center">
@@ -62,8 +62,8 @@
               <%= f.text_area :belongings, required: true, class: "form-control" %>
             </div>
 
-            <div class="form-group row">
-              <%= f.submit '投稿', class: "btn btn-info" %>
+            <div class="row text-center">
+              <div class="col"><%= f.submit ' 投稿 ', class: "btn btn-info" %></div>
             </div>
 
           </div>

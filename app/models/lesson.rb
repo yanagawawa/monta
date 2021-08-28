@@ -5,7 +5,7 @@ class Lesson < ApplicationRecord
   has_many :reserves, dependent: :destroy
   has_many :users, through: :reserves
 
-   scope :search, -> (search_params) do      #scopeでsearchメソッドを定義。(search_params)は引数
+  scope :search, -> (search_params) do      #scopeでsearchメソッドを定義。(search_params)は引数
     return if search_params.blank?      #検索フォームに値がなければ以下の手順は行わない
      title_like(search_params[:title])
       .genre_is(search_params[:lesson_genre])
@@ -61,7 +61,7 @@ class Lesson < ApplicationRecord
   end
 
   def lesson_total_time(start_time, end_time)
-  (end_time - start_time).floor / 60
+    (end_time - start_time).floor / 60
   end
 
 end

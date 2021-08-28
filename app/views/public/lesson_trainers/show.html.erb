@@ -1,40 +1,40 @@
 <div class="row">
-  <div class="col-3 d-none d-md-block m-3">
+      <div class="col-3 d-none d-md-block m-3">
 
-    <h6>【氏名】</h6>
-    <h1>
-      <%= @trainer.last_name %>
-      <%= @trainer.first_name %>
-    </h1>
-    <div>
-      <%= attachment_image_tag @trainer, :profile_image, :fill, 200, 200, format: 'jpeg', fallback: "no_image.jpg",size: "200x200" %>
-    </div>
-     <% if current_user.present? %>
-    <% if @relationships.present? %>
+         <h6>【氏名】</h6>
+         <h1>
+            <%= @trainer.last_name %>
+            <%= @trainer.first_name %>
+         </h1>
+         <div>
+            <%= attachment_image_tag @trainer, :profile_image, :fill, 200, 200, format: 'jpeg', fallback: "no_image.jpg",size: "200x200" %>
+         </div>
+         <% if current_user.present? %>
+            <% if @relationships.present? %>
 
-        <%= form_with model: @relationships, url: relationship_path(@relationships), method: :delete do |f| %>
-          <%= f.submit "Unfollow", class: "btn btn-large follow-btn" %>
-        <% end %>
-          <%= link_to "DMを始める", new_room_path(trainer_id: @trainer.id) %>
-      <% else %>
-          <%= form_with model: @relationship, url: relationships_path do |f| %>
-            <div><%= f.hidden_field :trainer_id %></div>
-            <div><%= f.hidden_field :user_id %></div>
-            <%= f.submit "Follow", class: "btn btn-large btn-primary follow-btn" %>
-          <% end %>
-          <div>フォローするとDMができます</div>
-        <% end %>
-        <% end %>
-  </div>
-  <div class="col-8 text-center m-3">
-    <div>
-        <%= attachment_image_tag @trainer, :pr_image, format: 'jpeg', fallback: "no-image-pr.jpg", class: "pr_image" %>
-    </div>
-    <h6>【PR】</h6>
-    <p><%= @trainer.pr_comment %></p>
-    <h6>【都道府県】</h6>
-    <p><%= @trainer.prefectures %></p>
-    <h6>【資格・実績】</h6>
-    <p><%= @trainer.result %></p>
-  </div>
+               <%= form_with model: @relationships, url: relationship_path(@relationships), method: :delete do |f| %>
+                  <%= f.submit "Unfollow", class: "btn btn-large follow-btn" %>
+               <% end %>
+               <%= link_to "DMを始める", new_room_path(trainer_id: @trainer.id) %>
+            <% else %>
+               <%= form_with model: @relationship, url: relationships_path do |f| %>
+                  <div><%= f.hidden_field :trainer_id %></div>
+                  <div><%= f.hidden_field :user_id %></div>
+                  <%= f.submit "Follow", class: "btn btn-large btn-primary follow-btn" %>
+               <% end %>
+               <div>フォローするとDMができます</div>
+            <% end %>
+         <% end %>
+      </div>
+      <div class="col-8 text-center m-3">
+         <div>
+            <%= attachment_image_tag @trainer, :pr_image, format: 'jpeg', fallback: "no-image-pr.jpg", class: "pr_image" %>
+         </div>
+         <h6>【PR】</h6>
+         <p><%= @trainer.pr_comment %></p>
+         <h6>【都道府県】</h6>
+         <p><%= @trainer.prefectures %></p>
+         <h6>【資格・実績】</h6>
+         <p><%=safe_join(@trainer.result.split("\n"),tag(:br))%></p>
+        </div>
 </div>

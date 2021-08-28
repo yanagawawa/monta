@@ -1,36 +1,36 @@
-<div class="row">
-  <% if user_signed_in? %>
-<%= render'public/users/sidebar', current_user: @user %>
-      <% elsif trainer_signed_in? %>
+<div class="row m-4">
+    <% if user_signed_in? %>
+      <%= render'public/users/sidebar', current_user: @user %>
+    <% elsif trainer_signed_in? %>
       <%= render'trainer/trainers/sidebar', current_trainer: @trainer %>
-      <% end %>
-   <div class="col-8">
+    <% end %>
+    <div class="col-8">
+      <h2 class="mt-3 text-center">メッセージ</h2>
 
 
-<% @messages.each do |message| %>
-  <% if message.sender %>
-    <%= render partial: 'public/rooms/user_chat', locals: {message: message, view:'text-left'} %>
-    <%#= link_to "×", room_message_path(message), method: :delete %>
-  <% else %>
-    <%= render partial: 'public/rooms/trainer_chat', locals: {message: message, view:'text-right'} %>
-  <% end %>
-<% end %>
-
-  <%= form_with model: [@room, @message], html: {class: "form"}, local: true do |f|%>
-    <div class="form-input">
-      <%= f.text_field :message, class: 'form-message', placeholder: 'メッセージを入力してください' %>
-      <% if current_trainer.present? %>
-        <div><%= f.hidden_field :trainer_id, value: current_trainer.id %></div>
-        <div><%= f.hidden_field :user_id, value: @room.user.id %></div>
+    <% @messages.each do |message| %>
+      <% if message.sender %>
+        <div class="ml-4"><%= render partial: 'public/rooms/user_chat', locals: {message: message, view:'text-left'} %></div>
       <% else %>
-        <div><%= f.hidden_field :user_id, value: current_user.id %></div>
-        <div><%= f.hidden_field :trainer_id, value: @room.trainer.id %></div>
+        <div><%= render partial: 'public/rooms/trainer_chat', locals: {message: message, view:'text-right'} %></div>
       <% end %>
-      <div><%= f.hidden_field :room_id, value: @room.id %></div>
-      <div><%= f.hidden_field :sender, value: @sender %></div>
-    </div>
-   <%= f.submit '送信', class: 'form-submit' %>
+    <% end %>
+
+    <%= form_with model: [@room, @message], html: {class: "form"}, local: true do |f|%>
+      <div class="col text-center">
+        <%= f.text_field :message, class: 'form-message text-center', size: "40x6", placeholder: 'メッセージを入力してください' %>
+          <% if current_trainer.present? %>
+          <div><%= f.hidden_field :trainer_id, value: current_trainer.id %></div>
+          <div><%= f.hidden_field :user_id, value: @room.user.id %></div>
+        <% else %>
+          <div><%= f.hidden_field :user_id, value: current_user.id %></div>
+          <div><%= f.hidden_field :trainer_id, value: @room.trainer.id %></div>
+        <% end %>
+        <div><%= f.hidden_field :room_id, value: @room.id %></div>
+        <div><%= f.hidden_field :sender, value: @sender %></div>
+      </div>
+     <div class="col text-center mt-4"><%= f.submit '送信', class: 'btn btn-info' %></div>
   <% end %>
 
-  </div>
-  </div>
+</div>
+</div>

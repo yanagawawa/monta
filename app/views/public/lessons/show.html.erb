@@ -133,11 +133,11 @@
         </tr>
         <tr>
           <th>レッスン詳細</th>
-          <td><%= @lesson.lesson_details %></td>
+          <td><%=safe_join(@lesson.lesson_details.split("\n"),tag(:br))%></td>
         </tr>
         <tr>
           <th>持ち物</th>
-          <td><%= @lesson.belongings %></td>
+          <td><%=safe_join(@lesson.belongings.split("\n"),tag(:br))%></td>
         </tr>
       </tbody>
     </table>
