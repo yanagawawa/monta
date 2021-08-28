@@ -6,47 +6,58 @@
     <div class="mr-3  text-center">
     <!--条件分岐、レッスン投稿したトレーナーだったら-->
     <% if current_trainer.present? %>
-      <%= link_to "レッスン編集", edit_trainer_lesson_path(@lesson), class: "btn btn-info text-white" %>
+      <% if @lesson.user.id == current_user.id %>
+        <div class="my-3">
+          <%= link_to "レッスン編集", edit_trainer_lesson_path(@lesson), class: "btn btn-info text-white" %>
+        </div>
 
+
+      <div class="my-3">
       <%= form_with model: @lesson, url: trainer_lesson_path(@lesson.id), local: true do |f| %>
         <%= f.label :lesson_status, "レッスンステータス" %><br>
         <%= f.select :lesson_status, options_for_select_from_enum(Lesson, :lesson_status), class: "form-control col-sm-12" %><br>
         <%= f.submit '編集', class: "btn btn-danger" %>
       <% end %>
-
+      </div>
+      <% end %>
     <% end %>
     <!--条件分岐、ユーザーだった場合-->
     <% if current_user.present? %>
     　<!--フォローの条件分岐-->
         <% if @relationships.present? %>
             <!--フォロー解除-->
+            <div class="my-3">
             <%= form_with model: @relationships, url: relationship_path(@relationships), method: :delete do |f| %>
              <%= f.submit "フォロー解除", class: "btn btn-large follow-btn" %>
             <% end %>
+            </div>
             <!--予約定員より、今予約している人数が少なかったら-->
             <% if @lesson.total_people >= @reserves.count %>
                 <!--もし、予約に自分のidがあったら-->
                 <% if @lesson.reserves.find_by(user_id: current_user.id) %>
                     <% case @lesson.reserves.find_by(user_id: current_user.id).take_lesson_status %>
                         <% when 'not_held' then %>
+                        <div class="my-3">
                             <div>予約済み</div>
                             <%= form_with model: @lesson.reserves.find_by(user_id: current_user.id), local: true do |f| %>
                                 <%= f.hidden_field :take_lesson_status, value: "cancel" %>
                                 <%= f.submit 'レッスンをキャンセルする', class: "btn btn-danger" %>
                             <% end %>
+                        </div>
                         <% when 'held' then %>
-                            <div>受講済み</div>
+                            <div class="my-3">受講済み</div>
                         <% else %>
-                            <div>キャンセル</div>
+                            <div class="my-3">キャンセル</div>
                     <% end %>
                 <!--もし、自分のidがなかったら-->
                 <% else %>
-
+                    <div class="my-3">
                     <%= form_with model: @reserve, url: reserves_path do |f| %>
                         <div><%= f.hidden_field :lesson_id %></div>
                         <div><%= f.hidden_field :user_id %></div>
                         <%= f.submit "予約", class: "btn btn-large btn-primary follow-btn" %>
                     <% end %>
+                    </div>
 
                 <% end %>
 
