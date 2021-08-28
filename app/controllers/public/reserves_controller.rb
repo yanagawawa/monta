@@ -9,9 +9,7 @@ class Public::ReservesController < ApplicationController
   def update
     @reserve = Reserve.find(params[:id])
     @reserve.update(reserve_params)
-    if params[:reserve][:take_lessson_status] == "held"
-      @reserve.lesson.update(lesson_status: "held")
-    end
+    redirect_to request.referer
   end
 
   def destroy
@@ -22,7 +20,7 @@ class Public::ReservesController < ApplicationController
 
   private
     def reserve_params
-      params.require(:reserve).permit(:lesson_id, :user_id, :take_lesson_genre)
+      params.require(:reserve).permit(:lesson_id, :user_id, :take_lesson_status)
     end
 
 end

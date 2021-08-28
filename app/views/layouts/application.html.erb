@@ -11,7 +11,13 @@
   </head>
 
   <body>
-    <header>
+     <% if user_signed_in? %>
+        <header class="user_signed_in">
+      <% elsif trainer_signed_in? %>
+        <header class="trainer_signed_in">
+      <% else %>
+      <header>
+      <% end %>
       <nav class="navbar navbar-expand-lg navbar-light d-flex align-items-center">
         <div class="container-fluid">
           <%= link_to root_path do %>
@@ -83,22 +89,19 @@
         </ul>
       </nav>
     </header>
-    <% if user_signed_in? %>
-        <div class="user_header"></div>
-      <% elsif trainer_signed_in? %>
-        <div class="trainer_header"></div>
-      <% else %>
-      <% end %>
+
     <main>
       <%= yield %>
     </main>
+
+
     <% if user_signed_in? %>
-        <div class="user_footer"></div>
+        <footer class="user_signed_in pt-5 pb-4">
       <% elsif trainer_signed_in? %>
-        <div class="trainer_footer"></div>
+        <footer class="trainer_signed_in pt-5 pb-4">
       <% else %>
+      <footer class="pt-5 pb-4">
       <% end %>
-    <footer class="pt-5 pb-4">
       <div class="container">
         <div class="text-center text-white">CopyRight Yanagawa</div>
        </div>

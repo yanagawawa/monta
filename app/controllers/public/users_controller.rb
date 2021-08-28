@@ -2,9 +2,8 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = current_user
-    @today_lesson = @user.lessons.where("lessons.start_time > ?", DateTime.now).reorder(:start_time)
-    @reserves = @user.reserves.where(take_lesson_status: "not_held")
-    # @reserves = @user.lessons.where("lessons.start_time > ?", DateTime.now).reorder(:start_time).joins(:reserves).where(take_lesson_status: "not_held")
+    @today_lesson = @user.lessons.where("lessons.start_time >= ? AND lessons.start_time < ?", Date.today,Date.today+1).reorder(:start_time)
+    @reserves = @user.reserves.where("reserves.take_lesson_status = 0").joins(:lesson).where("lessons.start_time >= ?", Date.today).reorder("lessons.start_time")
   end
 
   def history

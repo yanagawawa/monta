@@ -3,7 +3,7 @@
 <%= month_calendar events: @lessons do |date, lessons| %>
   <%= date %>
     <div>
-      <%= link_to lessons_path do %>
+      <%= link_to lessons_path(start_time:date,start_time_end:date) do %>
         <%= lessons.count %>
       <% end %>
     </div>

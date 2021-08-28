@@ -1,8 +1,8 @@
 class Trainer::TrainersController < ApplicationController
   def show
     @trainer = current_trainer
-    @today_lessons = Lesson.where("lessons.start_time == ?", Date.today).reorder(:start_time)
-    @not_held_lessons = Lesson.where(lesson_status: "not_held")
+    @today_lessons = Lesson.where("lessons.start_time >= ? AND lessons.start_time < ?", Date.today,Date.today+1).reorder(:start_time).where("lesson_status = 0")
+    @not_held_lessons = Lesson.where("lessons.start_time >= ?", Date.today).where(lesson_status: "not_held")
   end
 
   def edit

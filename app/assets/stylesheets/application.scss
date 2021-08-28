@@ -19,6 +19,7 @@
    background-color: #080958
  }
 
+
  body {
   display: flex;
   flex-direction: column;
@@ -34,35 +35,25 @@ footer {
  writing-mode: vertical-rl;
 }
 
-.user_header{
- width: 100%;
- height: 5px;
- background-color: #1974D2;
-}
-.user_footer{
- width: 100%;
- height: 5px;
- background-color: #1974D2;
- margin-top: auto;
+.trainer_signed_in{
+ border-bottom: solid 5px #FCD500;
+ border-top: solid 5px #FCD500;
 }
 
-.trainer_header{
- width: 100%;
- height: 5px;
- background-color: #FCD500;
+.user_signed_in{
+ border-bottom: solid 5px #1974D2;
+ border-top: solid 5px #1974D2;
 }
 
-.trainer_footer{
- width: 100%;
- height: 5px;
- background-color: #FCD500;
- margin-top: auto;
-}
 
 .sidebar{
 position: -webkit-sticky;
 position: sticky;
 bottom: 0;
+}
+
+a.sidebar_size{
+ font-size: 20px;
 }
 
 @import "bootstrap";

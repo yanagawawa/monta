@@ -4,11 +4,11 @@
         <%= current_user.last_name %>様
       </h2>
       <ul class="nav flex-column">
-        <li class="nav-item"><%= link_to "マイページ", user_path(current_user.id) %></li>
-        <li class="nav-item"><%= link_to "履歴一覧", history_path %></li>
-        <li class="nav-item"><%= link_to "フォローリスト", lesson_trainers_path %></li>
-        <li class="nav-item"><%= link_to "メッセージ", rooms_path %></li>
-        <li class="nav-item"><%= link_to "情報編集", edit_user_path(current_user.id) %></li>
+        <li class="nav-item my-2"><%= link_to "マイページ", user_path(current_user.id), class: "sidebar_size" %></li>
+        <li class="nav-item my-2"><%= link_to "履歴一覧", history_path, class: "sidebar_size" %></li>
+        <li class="nav-item my-2"><%= link_to "フォローリスト", lesson_trainers_path, class: "sidebar_size" %></li>
+        <li class="nav-item my-2"><%= link_to "メッセージ", rooms_path, class: "sidebar_size" %></li>
+        <li class="nav-item my-2"><%= link_to "情報編集", edit_user_path(current_user.id), class: "sidebar_size" %></li>
       </ul>
     </div>
 </nav>
