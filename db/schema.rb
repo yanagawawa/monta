@@ -26,8 +26,8 @@ ActiveRecord::Schema.define(version: 2021_08_22_070959) do
     t.string "address"
     t.float "latitude"
     t.float "longitude"
-    t.text "lesson_details", default: "", null: false
-    t.text "belongings", default: "", null: false
+    t.text "lesson_details"
+    t.text "belongings"
     t.integer "lesson_status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
