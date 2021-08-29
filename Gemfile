@@ -62,6 +62,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
+gem 'devise-i18n'
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
 gem 'bootstrap', '~> 4.5'
@@ -71,7 +72,9 @@ gem 'dotenv-rails'
 gem 'rails-i18n', '~> 5.1'
 gem 'gon'
 gem 'geocoder'
+gem 'simple_calendar', '~> 2.0'
+gem 'enum_help'
 
 # group :production do
-# gem 'mysql2'
+#   gem 'mysql2'
 # end
