@@ -1,15 +1,21 @@
 class Public::LessonsController < ApplicationController
 
   def index
-    @lessons = Lesson.where("lessons.start_time >= ?", Date.today).reorder(:start_time).where(lesson_status: "not_held")
-    @lessons_in_person = Lesson.where("lessons.start_time >= ?", Date.today).reorder(:start_time).where(take_lesson_genre: "in_person").where(lesson_status: "not_held")
-    @lessons_in_person_personal = Lesson.where("lessons.start_time >= ?", Date.today).reorder(:start_time).where(take_lesson_genre: "in_person_personal").where(lesson_status: "not_held")
-    @lessons_live = Lesson.where("lessons.start_time >= ?", Date.today).reorder(:start_time).where(take_lesson_genre: "live").where(lesson_status: "not_held")
-    @lessons_online_personal = Lesson.where("lessons.start_time >= ?", Date.today).reorder(:start_time).where(take_lesson_genre: "online_personal").where(lesson_status: "not_held")
+    @lessons = Lesson.get_not_held
+    @lessons_in_person = Lesson.get_not_held.where(take_lesson_genre: "in_person")
+    @lessons_in_person_personal = Lesson.get_not_held.where(take_lesson_genre: "in_person_personal")
+    @lessons_live = Lesson.get_not_held.where(take_lesson_genre: "live")
+    @lessons_online_personal = Lesson.get_not_held.where(take_lesson_genre: "online_personal")
     @search_params = lesson_search_params
-    @trainers = (params[:start_time].present? && params[:start_time_end].present?)?  Lesson.where("start_time >= ? AND start_time < ?",Date.parse(params[:start_time]), Date.parse(params[:start_time])+1) :Lesson.search(@search_params)
+    @trainers = (params[:start_time].present? && params[:start_time_end].present?) ?
+      Lesson.where("start_time >= ? AND start_time < ?",Date.parse(params[:start_time]), Date.parse(params[:start_time])+1) :
+      Lesson.get_not_held.search(@search_params)
     if (params[:start_time].present? && params[:start_time_end].present?) || @search_params.present?
       @lessons = @trainers
+      @lessons_in_person =  @lessons.where(take_lesson_genre: "in_person")
+      @lessons_in_person_personal =  @lessons.where(take_lesson_genre: "in_person_personal")
+      @lessons_live =  @lessons.where(take_lesson_genre: "live")
+      @lessons_online_personal =  @lessons.where(take_lesson_genre: "online_personal")
     end
   end
 

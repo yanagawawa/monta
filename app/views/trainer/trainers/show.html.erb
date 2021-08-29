@@ -2,7 +2,7 @@
       <%= render'trainer/trainers/sidebar', current_trainer: @trainer %>
       <div class="col-8">
          <p id="notice"><%= notice %></p>
-         <h3>トレーナー　<%= @trainer.last_name %>　様のページ</h3>
+         <h2 class="mt-3 text-center">トレーナー　<%= @trainer.last_name %>　様のページ</h2>
          <ul class="nav nav-tabs" role="tablist"  style="justify-content: center;">
             <li class="nav-item">
                <a class="nav-link active" id="trainer1-tab" data-toggle="tab" href="#trainer1" role="tab" aria-controls="trainer1" aria-selected="true">今日のレッスン</a>

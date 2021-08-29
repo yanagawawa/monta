@@ -1,5 +1,6 @@
 class Public::RoomsController < ApplicationController
-before_action :authenticate_user! || :authenticate_trainer!
+before_action :authenticate
+
 
   def index
     if current_user.present?
@@ -51,4 +52,10 @@ before_action :authenticate_user! || :authenticate_trainer!
     redirect_to rooms_path
   end
 
+private
+  def authenticate
+    if !(user_signed_in? | trainer_signed_in?)
+      redirect_to root_path
+    end
+  end
 end

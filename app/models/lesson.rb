@@ -44,6 +44,12 @@ class Lesson < ApplicationRecord
   validate :date_validation
   validate :start_check, if: :is_not_held_status?
 
+  default_scope{ order(:start_time) }
+
+  def self.get_not_held
+    return Lesson.where("lessons.start_time >= ?", Date.today).where(lesson_status: "not_held")
+  end
+
   def is_not_held_status?
     lesson_status == "not_held"
   end
