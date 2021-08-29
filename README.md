@@ -64,7 +64,11 @@ Win win の関係を作ることが出来る場です。
 
 ## 設計書
 
-<...>
+テーブル定義書
+<https://docs.google.com/spreadsheets/d/1pER7AaF-WP2UNhumAJeWsJPW2GJ9s7ykHwVYDX-a9p0/edit#gid=608974854>
+
+アプリケーション詳細設計書
+https://docs.google.com/spreadsheets/d/1XX5jsUIhdw5Gi4bD4vtRGAL598_NqYiUAMkrTDBPIoM/edit#gid=2133469642
 
 ## チャレンジ要素一覧
 
@@ -77,8 +81,3 @@ Win win の関係を作ることが出来る場です。
 - フレームワーク：Ruby on Rails
 - JS ライブラリ：jQuery
 - IDE：Cloud9
-
-## 使用素材
-
-- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名と URL を明記してください。
-- 使用しない場合は、使用素材の項目を README から削除してください。
