@@ -4,6 +4,8 @@
     <div class="col-8">
   	  <p id="notice"><%= notice %></p>
 
+  	  <h2 class="my-3 text-center"><%= @user.last_name %> 様</h2>
+
       <ul class="nav nav-tabs" role="tablist"  style="justify-content: center;">
         <li class="nav-item">
           <a class="nav-link active" id="user1-tab" data-toggle="tab" href="#user1" role="tab" aria-controls="user" aria-selected="true">今日のレッスン</a>
@@ -12,10 +14,10 @@
           <a class="nav-link" id="user2-tab" data-toggle="tab" href="#user2" role="tab" aria-controls="user2" aria-selected="false">予約済みレッスン</a>
         </li>
       </ul>
-     <div class="tab-content">
-        <div class="tab-pane fade show active" id="user1" role="tabpanel" aria-labelledby="user1-tab">
+     <div class="tab-content  text-center">
+        <div class="tab-pane fade show active p-2" id="user1" role="tabpanel" aria-labelledby="user1-tab">
           <% if @today_lesson.empty? %>
-                  本日のレッスンはありません
+                  <div class="my-4">本日のレッスンはありません</div>
                <% else %>
           <% @today_lesson.each do |today| %>
             <div class="container border my-3">
@@ -50,7 +52,7 @@
         </div>
         <div class="tab-pane fade" id="user2" role="tabpanel" aria-labelledby="user2-tab">
           <% if @reserves.empty? %>
-                  本日のレッスンはありません
+                  <div class="my-4">本日のレッスンはありません</div>
           <% else %>
           <% @reserves.each do |reserve| %>
             <div class="container border my-3">

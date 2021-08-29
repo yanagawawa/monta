@@ -15,7 +15,7 @@
             </li>
          </ul>
          <div class="tab-content">
-            <div class="tab-pane fade show active p-2" id="trainer1" role="tabpanel" aria-labelledby="trainer1-tab">
+            <div class="tab-pane fade show active p-2 text-center" id="trainer1" role="tabpanel" aria-labelledby="trainer1-tab">
                <% if @today_lessons.empty? %>
                   本日のレッスンはありません
                <% else %>
@@ -50,7 +50,7 @@
                   <% end %>
                <% end %>
             </div>
-            <div class="tab-pane fade p-2" id="trainer2" role="tabpanel" aria-labelledby="trainer2-tab">
+            <div class="tab-pane fade p-2  text-center" id="trainer2" role="tabpanel" aria-labelledby="trainer2-tab">
                <% if @not_held_lessons.empty? %>
                   只今、レッスンはありません
                <% else %>

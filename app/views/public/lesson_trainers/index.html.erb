@@ -3,8 +3,9 @@
     <%= render'public/users/sidebar', current_user: @user %>
     <div class="col-8">
       <h2 class="mt-3 text-center">フォロートレーナー 一覧</h2>
+      <div class="row">
       <% @trainers.each do |trainer| %>
-        <div class="row">
+
           <div class="col-4 mt-3">
             <div class="text-center">
               <%= link_to lesson_trainer_path(trainer.id) do %>
@@ -13,7 +14,8 @@
             </div>
             <div class="text-center"><%= trainer.last_name %><%= trainer.first_name %></div>
           </div>
-        </div>
+
       <% end %>
+    </div>
     </div>
 </div>

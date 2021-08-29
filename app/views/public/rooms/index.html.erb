@@ -7,10 +7,10 @@
     <div class="col-8">
 
     <h2 class="mt-3 text-center">ルーム一覧</h2>
-
+<div class="row">
 <% @rooms.each do |room| %>
-    <% if current_user.present? %>
-    <div class="row">
+
+      <% if current_user.present? %>
           <div class="col-4">
             <div class="text-right"><%= link_to "×", room_path(room), method: :delete %></div>
             <div class="text-center">
@@ -26,11 +26,11 @@
           <% end %>
               </div>
           </div>
-        </div>
+
 
     <% elsif current_trainer.present? %>
 
-<div class="row">
+
          <div class="col-6 text-center">
             <% if @messages.count != 0 %>
               <div class="badge badge-pill badge-danger"><%= @messages.count %></div>
@@ -41,11 +41,13 @@
            <% end %>
            <%= link_to "×", room_path(room), method: :delete %>
           </div>
-          </div>
+
 
 
 
     <% end %>
+
 <% end %>
+</div>
 </div>
 </div>
