@@ -74,7 +74,8 @@ gem 'gon'
 gem 'geocoder'
 gem 'simple_calendar', '~> 2.0'
 gem 'enum_help'
+gem "sassc", "< 2.2.0"
 
-# group :production do
-#   gem 'mysql2'
-# end
+group :production do
+  gem 'mysql2'
+end
