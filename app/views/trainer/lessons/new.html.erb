@@ -1,66 +1,87 @@
-
 <div class="row">
-    <div class="col-2">
-      <%= render'trainer/trainers/sidebar', trainer_name: @trainer %>
-    </div>
+    <%= render'trainer/trainers/sidebar', trainer_name: @trainer %>
     <div class="col-8">
-      新規レッスン作成
-<%= render 'layouts/errors', obj: @trainer %>
-<h1><%= @trainer.first_name %></h1>
 
-<%= form_with model:@lesson, url:'/trainer/lessons', local:true do |f| %>
+      <h2 class="mt-5 text-center">新規レッスン作成</h2>
+      <%= form_with model:@lesson, url:'/trainer/lessons', local:true do |f| %>
+        <%= render 'layouts/errors', model: f.object %>
+        <div class="row justify-content-md-center">
+          <div class="my-5">
+            <div class="form-group row">
+              <h5>【レッスン内容】</h5>
+            </div>
+            <div class="form-group row">
+              <%= f.label :title, "タイトル", class: "col-sm-4" %>
+              <%= f.text_field :title, required: true, placeholder: "20文字以内", class: "form-control" %>
+            </div>
+            <div class="form-group row">
+              <%= f.label :lesson_word, "レッスン一言", class: "col-sm-5" %>
+              <%= f.text_area :lesson_word, required: true, placeholder: "40文字以内", class: "form-control" %>
+            </div>
 
-<h4>タイトル</h4>
-  <%= f.text_field :title %>
-  <h4>レッスンひと言</h4>
-  <%= f.text_field :lesson_word %>
+            <div class="form-group row">
+              <h5>【レッスン概要】</h5>
+            </div>
 
+            <div class="form-inline my-2">
+              <div>
+                 <%= f.select :lesson_genre, options_for_select_from_enum(Lesson, :lesson_genre) %>
+              </div>
+              <div>
+                <%= f.select :take_lesson_genre, options_for_select_from_enum(Lesson, :take_lesson_genre) %>
+              </div>
+            </div>
 
-  <h4>【レッスン概要】</h4>
+            <div id="visi", class="form-group row">
+              <%= f.label :address, "住所", class: "col-sm-5" %>
+              <%= f.text_area :address, class: "form-control" %>
+            </div>
 
-  <%= f.select :lesson_genre, options_for_select_from_enum(Lesson, :lesson_genre) %>
+            <div class="form-group row">
+              <%= f.label :start_time, "レッスン開始", class: "col-sm-5" %>
+              <%= f.datetime_field :start_time, class: 'form-control, min: Date.current', step: 300 %>
+            </div>
 
-  <%= f.select :take_lesson_genre, options_for_select_from_enum(Lesson, :take_lesson_genre) %>
+            <div class="form-group row">
+             <%= f.label :end_time, "レッスン終了", class: "col-sm-5" %>
+              <%= f.datetime_field :end_time, class: 'form-control, min: Date.current', step: 300 %>
+            </div>
 
-  <input type="button" value="住所入力" onclick="hyoji2(0)">
-<input type="button" value="無し" onclick="hyoji2(1)">
+            <div class="form-group row">
+              <%= f.label :total_people, "人数", class: "col-sm-5" %>
+              <%= f.text_field :total_people, required: true, class: "form-control" %>
+            </div>
 
-  <div id="visi">
-  <h4>住所</h4>
-  <%= f.text_field :lesson_location %>
-  </div>
+            <div class="form-group row">
+              <%= f.label :lesson_details, "レッスン詳細", class: "col-sm-5" %>
+              <%= f.text_area :lesson_details, required: true, class: "form-control" %>
+            </div>
 
-  <h4>レッスン開始</h4>
-  <%= f.datetime_field :start, class: 'form-control', step: 300 %>
+            <div class="form-group row">
+              <%= f.label :belongings, "持ち物", class: "col-sm-5" %>
+              <%= f.text_area :belongings, required: true, class: "form-control" %>
+            </div>
 
-  <h4>レッスン終了</h4>
-  <%= f.datetime_field :end, class: 'form-control', step: 300 %>
+            <div class="row text-center">
+              <div class="col"><%= f.submit ' 投稿 ', class: "btn btn-info" %></div>
+            </div>
 
-  <h4>人数</h4>
-  <%= f.text_field :total_people %>
+          </div>
+        </div>
+      <% end %>
+    </div>
 
-  <h4>レッスン詳細</h4>
-  <%= f.text_area :lesson_details %>
-
-  <h4>持ち物</h4>
-  <%= f.text_area :belongings %>
-
-  <%= f.submit '投稿' %>
-<% end %>
-
-</div>
 <script>
 
-function hyoji2(num)
-{
-  if (num == 0)
-  {
+var select = document.getElementById("lesson_take_lesson_genre");
+select.addEventListener("change",function(event){
+  console.log(event.target.value)
+  if (event.target.value == "in_person" ||event.target.value == "in_person_personal"){
     document.getElementById("visi").style.visibility="visible";
   }
-  else
-  {
+  else {
     document.getElementById("visi").style.visibility="hidden";
   }
-}
+})
 
 </script>

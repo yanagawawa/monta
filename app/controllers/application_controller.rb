@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
     when Trainer
       trainer_trainer_path(resource)
     when User
-      customers_my_page_path
+      lessons_path
     end
   end
 
