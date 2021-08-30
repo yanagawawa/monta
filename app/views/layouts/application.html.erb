@@ -34,7 +34,7 @@
                   レッスン
                 </button>
                 <div class="dropdown-menu">
-                  <h1 class="dropdown-header">レッスン</h1>
+                  <h2 class="dropdown-header">レッスン</h2>
                   <%= link_to "レッスンALL", lessons_path, class: "dropdown-item" %>
                   <%= link_to "カレンダー", calendar_path, class: "dropdown-item" %>
                 </div>
@@ -50,7 +50,7 @@
                   レッスン
                 </button>
                 <div class="dropdown-menu">
-                  <h1 class="dropdown-header">レッスン</h1>
+                  <h2 class="dropdown-header">レッスン</h2>
                   <%= link_to "レッスンALL", lessons_path, class: "dropdown-item" %>
                   <%= link_to "カレンダー", calendar_path, class: "dropdown-item" %>
                 </div>
@@ -61,27 +61,27 @@
             <li><%= link_to "アバウト", about_path, class: "text-white py-2 d-none d-md-inline-block btn btn-outline-light rounded-0" %></li>
             <li>
               <div class="dropdown">
-                <button class="btn btn-outline-light rounded-0 text-white py-2 d-none d-md-inline-block dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <button class="button btn btn-outline-light rounded-0 text-white py-2 d-none d-md-inline-block dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   レッスン
                 </button>
                 <div class="dropdown-menu">
-                  <h1 class="dropdown-header">レッスン</h1>
+                  <h2 class="dropdown-header">レッスン</h2>
                   <%= link_to "レッスンALL", lessons_path, class: "dropdown-item" %>
                   <%= link_to "カレンダー", calendar_path, class: "dropdown-item" %>
                 </div>
               </div>
             </li>
-            <li><%= link_to "新規登録", new_user_registration_path, class: "text-white py-2 d-none d-md-inline-block btn btn-outline-light rounded-0" %></li>
-            <li><%= link_to "ログイン", new_user_session_path, class: "text-white py-2 d-none d-md-inline-block btn btn-outline-light rounded-0" %></li>
+            <li><%= link_to "新規登録", new_user_registration_path, class: "text-white py-2 d-none d-md-inline-block btn btn-outline-light rounded-0", 'data-turbolinks': false %></li>
+            <li><%= link_to "ログイン", new_user_session_path, class: "text-white py-2 d-none d-md-inline-block btn btn-outline-light rounded-0", 'data-turbolinks': false %></li>
             <li>
               <div class="btn-group dropleft">
-                <button class="btn btn-outline-light rounded-0 text-white py-2 d-none d-md-inline-block dropdown-toggle" type="button" id="dropdownMenu4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <button class="button btn btn-outline-light rounded-0 text-white py-2 d-none d-md-inline-block dropdown-toggle" type="button" id="dropdownMenu4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   トレーナー
                 </button>
                 <div class="dropdown-menu">
                   <%= link_to "トレーナーアバウト", trainer_about_path, class: "dropdown-item" %>
-                  <%= link_to "トレーナーログイン", new_trainer_session_path, class: "dropdown-item" %>
-                  <%= link_to "トレーナー新規登録", new_trainer_registration_path, class: "dropdown-item" %>
+                  <%= link_to "トレーナーログイン", new_trainer_session_path, class: "dropdown-item", 'data-turbolinks': false %>
+                  <%= link_to "トレーナー新規登録", new_trainer_registration_path, class: "dropdown-item", 'data-turbolinks': false %>
                 </div>
               </div>
             </li>

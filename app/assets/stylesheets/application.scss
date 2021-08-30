@@ -16,7 +16,7 @@
  */
 
  nav{
-   background-color: #080958
+   background-color: #080958;
  }
 
 
@@ -28,7 +28,7 @@
 
 footer {
   margin-top: auto;
-  background-color: #080958
+  background-color: #080958;
 }
 
 .spin{
@@ -55,6 +55,38 @@ bottom: 0;
 
 a.sidebar_size{
  font-size: 20px;
+}
+
+@font-face {
+  font-family: Condense;
+  src: url('/assets/Condense.otf') format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: KyouryunoGuratan;
+  src: url('/assets/KyouryunoGuratan.otf') format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: KTEGAKI;
+  src: url('/assets/KTEGAKI.ttf') format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.dropdown-header{
+ font-family: Condense;
+}
+
+li a {
+  font-family: Condense;
+}
+.button {
+  font-family: Condense;
 }
 
 @import "bootstrap";
