@@ -85,8 +85,15 @@ a.sidebar_size{
 li a {
   font-family: Condense;
 }
-.button {
+
+li a :hover {
+  color: red;
+}
+.button{
   font-family: Condense;
+}
+.button:hover {
+  color: red;
 }
 
 @import "bootstrap";
