@@ -11,6 +11,7 @@
   </head>
 
   <body>
+    <!--ユーザーでサインインした場合-->
      <% if user_signed_in? %>
         <header class="user_signed_in">
       <% elsif trainer_signed_in? %>
@@ -41,6 +42,7 @@
               </div>
             </li>
             <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "text-white py-2 d-none d-md-inline-block btn btn-outline-light rounded-0" %></li>
+            <!--トレーナーでサインインした場合-->
           <% elsif trainer_signed_in? %>
             <li><%= link_to "アバウト",  trainer_about_path, class: "text-white py-2 d-none d-md-inline-block btn btn-outline-light rounded-0" %></li>
             <li><%= link_to "マイページ", trainer_trainer_path(current_trainer.id), class: "text-white py-2 d-none d-md-inline-block btn btn-outline-light rounded-0" %></li>
@@ -57,6 +59,7 @@
               </div>
             </li>
             <li><%= link_to "ログアウト", destroy_trainer_session_path, method: :delete, class: "text-white py-2 d-none d-md-inline-block btn btn-outline-light rounded-0" %></li>
+            <!--サインインしていない場合-->
           <% else %>
             <li><%= link_to "アバウト", about_path, class: "text-white py-2 d-none d-md-inline-block btn btn-outline-light rounded-0" %></li>
             <li>
