@@ -135,6 +135,17 @@
     <% end %>
 
         <tr>
+          <th scope="row">予約人数</th>
+          <td>
+            <% if @reserves == nil %>
+              0
+            <% else %>
+              <%= @reserves.count %>
+            <% end %>
+            /<%= @lesson.total_people %>
+          </td>
+        </tr>
+        <tr>
           <th scope="row">開催日時</th>
           <td><%= l @lesson.start_time, format: :default %></td>
         </tr>
