@@ -46,6 +46,7 @@ class Lesson < ApplicationRecord
 
   default_scope{ order(:start_time) }
 
+# メソッド化
   def self.get_not_held
     return Lesson.where("lessons.start_time >= ?", Date.today).where(lesson_status: "not_held")
   end

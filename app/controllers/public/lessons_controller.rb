@@ -1,6 +1,7 @@
 class Public::LessonsController < ApplicationController
 
   def index
+    # get_not_heldはモデルでメソッド化しています
     @lessons = Lesson.get_not_held
     @lessons_in_person = Lesson.get_not_held.where(take_lesson_genre: "in_person")
     @lessons_in_person_personal = Lesson.get_not_held.where(take_lesson_genre: "in_person_personal")
