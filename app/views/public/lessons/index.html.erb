@@ -1,7 +1,7 @@
 <div class="row">
 
     <%= render 'public/lessons/search', search_params: @search_params %>
-    <div class="col-8 my-5 text-center">
+    <div class="col-10 my-5 text-center">
 
       <p id="notice"><%= notice %></p>
       <h2>レッスン一覧</h2>
@@ -57,6 +57,7 @@
                 </div>
               </div>
             <% end %>
+            <%= paginate @lessons, :param_name => 'lessons' %>
           <% end %>
         </div>
         <div class="tab-pane fade p-2" id="lesson2" role="tabpanel" aria-labelledby="lesson2-tab">
@@ -92,6 +93,7 @@
                 </div>
               </div>
             <% end %>
+            <%= paginate @lessons_in_person, :param_name => 'lessons_in_person' %>
           <% end %>
         </div>
         <div class="tab-pane fade p-2" id="lesson3" role="tabpanel" aria-labelledby="lesson3-tab">
@@ -127,6 +129,7 @@
                 </div>
               </div>
             <% end %>
+            <%= paginate @lessons_in_person_personal, :param_name => 'lessons_in_person_personal' %>
           <% end %>
         </div>
         <div class="tab-pane fade p-2" id="lesson4" role="tabpanel" aria-labelledby="lesson4-tab">
@@ -162,6 +165,7 @@
                 </div>
               </div>
             <% end %>
+            <%= paginate @lessons_live, :param_name => 'lessons_live' %>
           <% end %>
         </div>
         <div class="tab-pane fade p-2" id="lesson5" role="tabpanel" aria-labelledby="lesson5-tab">
@@ -197,6 +201,7 @@
                 </div>
               </div>
             <% end %>
+            <%= paginate @lessons_online_personal, :param_name => 'lessons_online_personal' %>
           <% end %>
         </div>
       </div>

@@ -2,11 +2,11 @@ class Public::LessonsController < ApplicationController
 
   def index
     # get_not_heldはモデルでメソッド化しています
-    @lessons = Lesson.get_not_held
-    @lessons_in_person = Lesson.get_not_held.where(take_lesson_genre: "in_person")
-    @lessons_in_person_personal = Lesson.get_not_held.where(take_lesson_genre: "in_person_personal")
-    @lessons_live = Lesson.get_not_held.where(take_lesson_genre: "live")
-    @lessons_online_personal = Lesson.get_not_held.where(take_lesson_genre: "online_personal")
+    @lessons = Lesson.get_not_held.page(params[:lessons]).per(10)
+    @lessons_in_person = Lesson.get_not_held.where(take_lesson_genre: "in_person").page(params[:lessons_in_person]).per(10)
+    @lessons_in_person_personal = Lesson.get_not_held.where(take_lesson_genre: "in_person_personal").page(params[:lessons_in_person_personal]).per(10)
+    @lessons_live = Lesson.get_not_held.where(take_lesson_genre: "live").page(params[:lessons_live]).per(10)
+    @lessons_online_personal = Lesson.get_not_held.where(take_lesson_genre: "online_personal").page(params[:lessons_online_personal]).per(10)
     @search_params = lesson_search_params
     @trainers = (params[:start_time].present? && params[:start_time_end].present?) ?
       Lesson.where("start_time >= ? AND start_time < ?",Date.parse(params[:start_time]), Date.parse(params[:start_time])+1) :

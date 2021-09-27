@@ -75,6 +75,8 @@ gem 'geocoder'
 gem 'simple_calendar', '~> 2.0'
 gem 'enum_help'
 gem "sassc", "< 2.2.0"
+gem 'kaminari','~> 1.2.1'
+
 
 group :production do
   gem 'mysql2'
