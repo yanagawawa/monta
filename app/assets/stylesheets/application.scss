@@ -59,21 +59,21 @@ a.sidebar_size{
 
 @font-face {
   font-family: Condense;
-  src: url('/assets/Condense.otf') format("truetype");
+  src: font-url('Condense.otf') format("truetype");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: KyouryunoGuratan;
-  src: url('/assets/KyouryunoGuratan.otf') format("truetype");
+  src: font-url('KyouryunoGuratan.otf') format("truetype");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: KTEGAKI;
-  src: url('/assets/KTEGAKI.ttf') format("truetype");
+  src: font-url('KTEGAKI.ttf') format("truetype");
   font-weight: normal;
   font-style: normal;
 }
